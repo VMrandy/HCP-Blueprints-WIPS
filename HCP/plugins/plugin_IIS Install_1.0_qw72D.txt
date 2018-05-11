@@ -1,0 +1,25 @@
+{
+  "referenceId": "qw72D",
+  "version": "1.0",
+  "name": "IIS Install",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "$computername = \"$env:computername\"\n$computername\n$computer = [ADSI]\"WinNT://$computerName,computer\"\n$computer\n$userList = $computer.psbase.Children | Where-Object { $_.psbase.schemaclassname -eq 'user' } \n#$userList\nforeach ($user in $userList)\n{\n$userObject = New-Object System.Security.Principal.NTAccount($user.Name)\n\n$userSID = $userObject.Translate([System.Security.Principal.SecurityIdentifier])\n\nif(($userSID.Value.substring(0,6) -eq \"S-1-5-\") -and ($userSID.Value.substring($userSID.Value.Length - 4, 4) -eq \"-500\"))\n{\n    Write-Host \"reached\"\n    $user.SetPassword($password)\n\n}\n}\nInstall-WindowsFeature -Name \"Web-Server\" -IncludeAllSubFeature -IncludeManagementTools\nRename-Computer -NewName $vm_name -Restart -Force\t",
+  "envs": [
+    {
+      "prop": "vm_name",
+      "val": "test",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "password",
+      "val": "'Gridstore123'",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

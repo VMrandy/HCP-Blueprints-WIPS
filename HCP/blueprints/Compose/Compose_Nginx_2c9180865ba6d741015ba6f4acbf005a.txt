@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865ba6d741015ba6f4acbf005a",
+  "name": "Nginx",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "Opensource loadbalancer",
+  "shortDescription": "3-tier single host - Nginx Tomcat Mysql",
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/PROP/nginx.png",
+  "yml": "LB:\n  image: nginx:latest\n  publish_all: true\n  mem_min: 50m\n  volumes:\n    - /opt/data/config:/var/lib/hypercloud/volumes/vol-wkL",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

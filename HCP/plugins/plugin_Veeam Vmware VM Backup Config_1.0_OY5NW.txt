@@ -1,0 +1,25 @@
+{
+  "referenceId": "OY5NW",
+  "version": "1.0",
+  "name": "Veeam Vmware VM Backup Config",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "& 'C:\\Program Files\\Veeam\\Console\\Install-VeeamToolkit.ps1'\n& 'C:\\Program Files\\Veeam\\Console\\Initialize-VeeamToolkit.ps1'\n& 'c:\\Program Files\\Veeam\\Backup and Replication\\Console\\Initialize-VeeamToolkit.ps1'\nRescan-VBREntity -AllHosts -Wait\nif ((Find-VBRViEntity -VMsAndTemplates -Name '$VM_name') -ne $null)\n{\n$jobname = \"$VM_name\" + \" Backup Job\"\nAdd-VBRViBackupJob -Entity (Find-VBRViEntity -VMsAndTemplates -Name '$VM_name') -Name $jobname -BackupRepository (Get-VBRBackupRepository | where {$_.Name -like '*$rep*'}) -Description \"backup job for $VM_name\"\n$job = Get-VBRJob -Name '*$VM_name*'\nEnable-VBRJob -Job $job\nSleep 30\nStart-VBRJob -Job $job\n}\nelse\n{\n\t\tcls\n        Write-host \"The Cluster hosting the VM is not added in Veeam or the VM name is incorrect\"\n }\n $job.GetLastResult()",
+  "envs": [
+    {
+      "prop": "VM_name",
+      "val": "HGvRO",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "rep",
+      "val": "puneet",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

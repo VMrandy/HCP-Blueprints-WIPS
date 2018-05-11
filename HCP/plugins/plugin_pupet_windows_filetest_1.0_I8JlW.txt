@@ -1,0 +1,12 @@
+{
+  "referenceId": "I8JlW",
+  "version": "1.0",
+  "name": "pupet_windows_filetest",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "file { c:/tmp/example.txt: content => 'hello world' }",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "PUPPET",
+  "timeout": 30
+}

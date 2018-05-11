@@ -1,0 +1,25 @@
+{
+  "referenceId": "b39YB",
+  "version": "2.0",
+  "name": "DCHQ RabbitMQ Conf",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "DCHQ_USER_PASS",
+      "val": "dcH9i0",
+      "hidden": true,
+      "eval": null
+    },
+    {
+      "prop": "DCHQ_ADMIN_PASS",
+      "val": "dcH9i0IM",
+      "hidden": true,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

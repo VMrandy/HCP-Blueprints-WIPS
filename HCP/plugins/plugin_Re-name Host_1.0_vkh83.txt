@@ -1,0 +1,19 @@
+{
+  "referenceId": "vkh83",
+  "version": "1.0",
+  "name": "Re-name Host",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Rename-Computer -NewName $vm_name -Restart -Force",
+  "envs": [
+    {
+      "prop": "vm_name",
+      "val": "test",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

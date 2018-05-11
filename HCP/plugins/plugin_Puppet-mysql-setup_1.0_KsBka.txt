@@ -1,0 +1,12 @@
+{
+  "referenceId": "KsBka",
+  "version": "1.0",
+  "name": "Puppet-mysql-setup",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "/opt/puppetlabs/bin/puppet module install puppetlabs-mysql\n\ncat site2.pp\nclass { 'mysql::server':\n   root_password => 'password',\n }\nmysql::db { 'mydb':\n  user     => 'myuser',\n  password => 'mypass',\n  host     => 'localhost',\n  grant    => ['SELECT', 'UPDATE'],\n}\n\n puppet apply /etc/puppet/manifests/site2.pp",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

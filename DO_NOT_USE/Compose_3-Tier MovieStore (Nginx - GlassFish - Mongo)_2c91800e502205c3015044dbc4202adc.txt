@@ -1,0 +1,16 @@
+{
+  "id": "2c91800e502205c3015044dbc4202adc",
+  "name": "3-Tier MovieStore (Nginx - GlassFish - Mongo)",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "A simple Movie Store Java application. This 3-Tier Docker Java Application is deployed on Nginx, GlassFish Application Server and Mongo. Once the application is deployed, get access to monitoring, alerts and notifications, continuous delivery using Jenkins, application backups, scale in/out, in-browser terminal to access the containers, log viewing, and container updates using custom plug-ins.",
+  "shortDescription": "3-Tier Docker Java Application with Nginx, GlassFish App Server and Mongo. Deploy and manage this application on vSphere, OpenStack, Amazon EC2, Rackspace, Microsoft Azure, Google Compute Engine, DigitalOcean, IBM SoftLayer, etc.",
+  "externalLink": null,
+  "imageLink": null,
+  "yml": "Nginx:\n  image: nginx:latest\n  publish_all: true\n  mem_min: 50m\n  host: host1\n  plugins:\n    - !plugin\n      id: 0H1Nk\n      restart: true\n      lifecycle: on_create, post_scale_out:AppServer, post_scale_in:AppServer\n      arguments:\n        # Use container_private_ip if you're using Docker networking\n        - servers=server {{AppServer | container_private_ip}}:8080;\n        # Use container_hostname if you're using Weave networking\n        #- servers=server {{AppServer | container_hostname}}:8080;\nAppServer:\n  image: glassfish:latest\n  # Deploys on a host with min memory of (cluster_size * 500MB)\n  mem_min: 500m\n  # affinity-group\n  # AppServer instances will be deployed on two separate hosts (host1 & host2) \n  host: host1\n  cluster_size: 1\n  environment:\n    - mongo.host={{MongoDB|container_hostname}}\n    - mongo.port=27017\n    #- spring.data.mongodb.host={{MongoDB|container_ip}}\n    #- spring.data.mongodb.port=27017\n  plugins:\n    - !plugin\n      id: 1UWR1\n      restart: true\n      arguments:\n        - dir=/ROOT.war\n        - file_url=https://www.dropbox.com/s/2gvkno76tt22y3q/moviestore-0.1.0.BUILD-SNAPSHOT.war?dl=1\nMongoDB:\n  image: mongo:latest\n  # affinity-group\n  # DB instance will be deployed on a third hosts (host3)\n  host: host1\n  # Deploys on a host with min memory of 400MB  \n  mem_min: 400m",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

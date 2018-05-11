@@ -1,0 +1,23 @@
+{
+  "id": "2c918010507e716301507f1b20eb18aa",
+  "name": "Redis Cluster",
+  "version": "latest",
+  "tags": "DEV",
+  "description": null,
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/PROP/redis.png",
+  "yml": "Redis:\n  image: redis:latest\n  mem_min: 10m\n  publish_all_ports: true\n  cluster_size: 2",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

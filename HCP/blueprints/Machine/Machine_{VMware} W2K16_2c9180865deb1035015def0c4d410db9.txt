@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865deb1035015def0c4d410db9",
+  "name": "{VMware} W2K16",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Windows Server 2016 on VMware vSphere w/ agent\n2vCPU/16GB 100GB",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/micro.png",
+  "yml": "Machine: \n  group: hcwin\n  region: HG-Datacenter\n  image: VMT-W2K16-DC-200v2\n  instanceType: cpu=2,memory=16GB,disk=100GB\n  network: dvp-vlan-26\n  skipAgentInstall: true\n  count: 1\n  plugins:   \n    - !plugin\n      id: SDnvF",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,12 @@
+{
+  "referenceId": "Fb425",
+  "version": "1.0",
+  "name": "Veeam Create Local Repository Blueprint",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "& 'C:\\Program Files\\Veeam\\Console\\Install-VeeamToolkit.ps1'\n& 'C:\\Program Files\\Veeam\\Console\\Initialize-VeeamToolkit.ps1'\ncls\n$partitions = Get-Partition\nforeach ($partition in $partitions)\n\t{\n    \t$paths = $partition.accesspaths\n    \tforeach ($path in $paths)\n    \t\t{\n    \n\t\t\t\tif ($path -like '*VEEAMLOCAL*')\n\t\t\t\t\t{\n\t\t\t\t\t\t\n\t\t\t\t\t\t$reppath = $path\n\t\t\t\t\t}\n\t\t\t}\n\t}\nget-vbrserver\n        #Add Windows repository if the repository server is WinLocal\n        \t$localrepserver = \"$env:computername\"\n            $repname= \"Veeam Local On HyperCloud \"\n            $rep = Add-VBRBackupRepository -Name $repname -Type 'WinLocal' -Server '$localrepserver' -Folder '$reppath' -Description (\"Local Windows Backup repository on \" + '$localrepserver') -ImportBackup -MaxConcurrentJobs 50\n $rep.name ",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

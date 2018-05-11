@@ -1,0 +1,12 @@
+{
+  "referenceId": "KsBka",
+  "version": "1.0",
+  "name": "Install Puppet Modules",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\n/opt/puppetlabs/bin/puppet module install puppetlabs-java --version 2.0.0\n/opt/puppetlabs/bin/puppet module install puppetlabs-tomcat --version 1.7.0\n/opt/puppetlabs/bin/puppet module install puppetlabs-mysql --version 3.11.0\n",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

@@ -1,0 +1,31 @@
+{
+  "referenceId": "V8tlM",
+  "version": "1.0",
+  "name": "W10 VDI Sysprep",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "$content = @'\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<unattend xmlns=\"urn:schemas-microsoft-com:unattend\">\n\t<settings pass=\"oobeSystem\">\n\t\t<component name=\"Microsoft-Windows-Shell-Setup\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n\t\t<OOBE>\n\t\t\t<HideEULAPage>true</HideEULAPage>\n\t\t\t<HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>\n\t\t\t<NetworkLocation>Work</NetworkLocation>\n\t\t\t<ProtectYourPC>1</ProtectYourPC>\n\t\t\t<SkipMachineOOBE>true</SkipMachineOOBE>\n\t\t</OOBE>\n\t\t<UserAccounts>\n\t\t\t<AdministratorPassword>\n\t\t\t\t<Value>HyperGrid123</Value>\n\t\t\t\t<PlainText>true</PlainText>\n\t\t\t</AdministratorPassword>\n\t\t\t<LocalAccounts>\n\t\t\t\t<LocalAccount wcm:action=\"add\">\n\t\t\t\t\t<Password>\n\t\t\t\t\t<Value>HyperGrid123</Value>\n\t\t\t\t\t<PlainText>true</PlainText>\n\t\t\t\t\t</Password>\n\t\t\t\t<Description>Admin</Description>\n\t\t\t\t<DisplayName>Admin</DisplayName>\n\t\t\t\t<Group>Administrators;Users</Group>\n\t\t\t\t<Name>Admin</Name>\n\t\t\t\t</LocalAccount>\n\t\t\t</LocalAccounts>\n\t\t</UserAccounts>\n\t\t<RegisteredOwner>HyperGrid</RegisteredOwner>\n\t\t<FirstLogonCommands>\n\t\t\t</SynchronousCommand>\n\t\t\t<SynchronousCommand wcm:action=\"add\">\n\t\t\t\t<CommandLine>powershell.exe -executionpolicy bypass Start-Sleep -Seconds 10</CommandLine>\n\t\t\t\t<Description>Wait After Install</Description>\n\t\t\t\t<Order>1</Order>\n\t\t\t\t<RequiresUserInput>false</RequiresUserInput>\n\t\t\t</SynchronousCommand>\n\t\t\t<SynchronousCommand wcm:action=\"add\">\n\t\t\t\t<CommandLine>logoff</CommandLine>\n\t\t\t\t<Description>Logoff After Install</Description>\n\t\t\t\t<Order>2</Order>\n\t\t\t\t<RequiresUserInput>false</RequiresUserInput>\n\t\t\t</SynchronousCommand>\n\t\t</FirstLogonCommands>\n\t\t</component>\n\t\t<component name=\"Microsoft-Windows-International-Core\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n\t\t\t<InputLocale>en-Us</InputLocale>\n\t\t\t<SystemLocale>en-Us</SystemLocale>\n\t\t\t<UILanguage>en-Us</UILanguage>\n\t\t\t<UILanguageFallback>en-Us</UILanguageFallback>\n\t\t\t<UserLocale>en-Us</UserLocale>\n\t\t</component>\n\t</settings>\n\t<settings pass=\"specialize\">\n\t<component name=\"Microsoft-Windows-Shell-Setup\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n\t<ComputerName>*</ComputerName>\n\t\t<OEMName>HyperGrid</OEMName>\n\t\t<RegisteredOrganization>HyperGrid</RegisteredOrganization>\n\t\t<RegisteredOwner>HyperGrid</RegisteredOwner>\n\t</component>\n <component name=\"Microsoft-Windows-UnattendedJoin\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <Identification>\n                <Credentials>\n                    <Domain>SKYGRID.CLOUD</Domain>\n                    <Password>HyperGrid123</Password>\n                    <Username>leostream_svc</Username>\n                </Credentials>\n                <JoinDomain>SKYGRID.CLOUD</JoinDomain>\n                <MachineObjectOU>OU=Virtual Desktops,OU=HyperGrid,DC=skygrid,DC=cloud</MachineObjectOU>\n            </Identification>\n        </component>\n\t<component name=\"Networking-MPSSVC-Svc\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n\t\t<FirewallGroups>\n\t\t\t<FirewallGroup wcm:action=\"add\" wcm:keyValue=\"EnableRDP\">\n\t\t\t\t<Active>true</Active>\n\t\t\t\t<Group>@FirewallAPI.dll,-28752</Group>\n\t\t\t\t<Profile>all</Profile>\n\t\t\t</FirewallGroup>\n\t\t</FirewallGroups>\n\t</settings>\n</unattend>\n'@\n\nNew-Item 'c:\\opt\\Unattend.xml' -type file -force -value $content\n\nStart-Process -FilePath 'C:\\Windows\\System32\\Sysprep\\sysprep.exe' -ArgumentList '/generalize /reboot /oobe /quiet /unattend:c:\\opt\\Unattend.xml'\n",
+  "envs": [
+    {
+      "prop": "Domain-Pwd",
+      "val": "Password",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Domain_Name",
+      "val": "Domain-Name",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Domain-Admin",
+      "val": "Admin",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

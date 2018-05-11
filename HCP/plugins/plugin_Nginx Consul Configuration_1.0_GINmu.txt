@@ -1,0 +1,37 @@
+{
+  "referenceId": "GINmu",
+  "version": "1.0",
+  "name": "Nginx Consul Configuration",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash  \n\nsed -i 's/APPSERVER_IP/$APPSERVER_IP/g' /etc/consul-templates/nginx.conf\nsed -i 's/SERVICE_TAGS/$SERVICE_TAGS/g' /etc/consul-templates/nginx.conf\nsed -i 's/SERVICE_NAME/$SERVICE_NAME/g' /etc/consul-templates/nginx.conf\nsed -i 's/CONSUL_IP/$CONSUL_IP/g' /etc/service/consul-template/run\n",
+  "envs": [
+    {
+      "prop": "CONSUL_IP",
+      "val": "{{Consul | container_private_ip}}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "APPSERVER_IP",
+      "val": "{{AppServer | container_private_ip}}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "SERVICE_NAME",
+      "val": "{{AppServer | SERVICE_NAME}}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "SERVICE_TAGS",
+      "val": "{{AppServer | SERVICE_TAGS}}",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

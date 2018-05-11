@@ -1,0 +1,55 @@
+{
+  "referenceId": "Uhm9W",
+  "version": "1.0",
+  "name": "Veeam Create Local Repository",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "& 'C:\\Program Files\\Veeam\\Console\\Install-VeeamToolkit.ps1'\n& 'C:\\Program Files\\Veeam\\Console\\Initialize-VeeamToolkit.ps1'\ncls\n        Write-Host \"Adding a local Backup Repository\"\n        if ($localrepserver_type -match \"LinuxLocal\")\n        {\n            $repname= \"LinuxLocal on \" + $localrepserver\n            Add-VBRLinux -Name $localrepserver -SSHUser $linuxuser -SSHPassword $linuxpassword\n            Add-VBRBackupRepository -Name $repname -Type $localrepserver_type -Server $localrepserver -Folder $reppath -Description (\"Local Linux Backup repository on \" + $localrepserver) -ImportBackup -MaxConcurrentJobs 50\n        }\n        #Add Windows repository if the repository server is WinLocal\n        if ($localrepserver_type -match \"WinLocal\")\n        { \n            $repname= \"WinLocal on \" + $localrepserver\n            Add-VBRWinServer -Name $localrepserver -User $winuser -Password $winpassword\n            Add-VBRBackupRepository -Name $repname -Type $localrepserver_type -Server $localrepserver -Folder $reppath -Description (\"Local Windows Backup repository on \" + $localrepserver) -ImportBackup -MaxConcurrentJobs 50\n            }",
+  "envs": [
+    {
+      "prop": "linuxpassword",
+      "val": "\"Gridstore123\"",
+      "hidden": true,
+      "eval": null
+    },
+    {
+      "prop": "winpassword",
+      "val": "\"Gridstore123\"",
+      "hidden": true,
+      "eval": null
+    },
+    {
+      "prop": "linuxuser",
+      "val": "\"user\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "localrepserver_type",
+      "val": "\"WinLocal\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "reppath",
+      "val": "\"E:\\local_backup_rep\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "localrepserver",
+      "val": "\"10.0.4.142\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "winuser",
+      "val": "\"localhost\\Administrator\"",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865c5b9849015c6078cb49388d",
+  "name": "Multi-VM Blueprint Example",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Multi-VM Blueprint for Tomcat and MySQL",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Tomcat: \n  group: app\n  region: GS1604-0229\n  image: C:\\ClusterStorage\\HyperCloud_Templates\\Default\\Ubuntu14HFTemplate.vhdx\n  instanceType: cpu=2,memory=8GB,disk=40GB,generation=1\n  network: Compute vmSwitch,vlanId=10\n  skipAgentInstall: true\n  count: 1\n  plugins:\n    - !plugin\n      id: Iz1rQ\n      #lifecycle: post_create\n  hbsVolumes: \n    - !volume \n      volume_provider_id: 2c9180865b7ced4c015b7e50133b0004\n      name: app\n      size: 5G\n      prefix: app\nMySQL: \n  group: db\n  region: GS1604-0229\n  image: C:\\ClusterStorage\\HyperCloud_Templates\\Default\\Ubuntu14HFTemplate.vhdx\n  instanceType: cpu=2,memory=8GB,disk=40GB,generation=1\n  network: Compute vmSwitch,vlanId=10\n  skipAgentInstall: true\n  count: 1\n  plugins:\n    - !plugin\n      id: 6dNM8\n      #lifecycle: post_create\n  hbsVolumes: \n    - !volume \n      volume_provider_id: 2c9180865b7ced4c015b7e50133b0004\n      name: db\n      size: 5G\n      prefix: db",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

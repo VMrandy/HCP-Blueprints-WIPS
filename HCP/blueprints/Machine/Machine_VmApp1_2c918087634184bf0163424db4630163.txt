@@ -1,0 +1,16 @@
+{
+  "id": "2c918087634184bf0163424db4630163",
+  "name": "VmApp1",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "3 Tier app",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/MULTI_IMAGE/default.png",
+  "yml": "App3:\n group: app3\n image: C:\\ClusterStorage\\HyperCloud_Templates\\Default\\Ubuntu16_HCP_Template.vhdx\n instanceType: cpu=1,memory=4GB,disk=20GB\n network: hcs_tentant_subnet_kkp,vlanId=1220\n count: 1\n plugins:\n  - !plugin\n    id: Be69y\n modelingParams:\n  compute:\n  blockStorage:\n  objectStorage:\n globalParams:\nApp4:\n group: app4\n image: C:\\ClusterStorage\\HyperCloud_Templates\\Default\\Ubuntu16_HCP_Template.vhdx\n instanceType: cpu=1,memory=4GB,disk=20GB\n network: hcs_tentant_subnet_kkp,vlanId=1220\n count: 1\n plugins:\n  - !plugin\n    id: Yj5he\n modelingParams:\n  compute:\n  blockStorage:\n  objectStorage:\n globalParams:\n\n",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,25 @@
+{
+  "referenceId": "MpKyO",
+  "version": "1.0",
+  "name": "Win_Searchhead_Configuration",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#Storing the Filepath\n#$Filepath = \"C:\\Program` `Files\\Splunk\\etc\\system\\local\\server.conf\"\n\n#Checking for mode and then insert the configuration setting\n$b =  Select-String -Pattern \"mode = searchhead\" -Path $Filepath\n\n   if (-not $b)\n   {\n      Add-Content $Filepath \"`r`n\"\n      Add-Content $Filepath \"`n[clustering]\"\n      #$Splunk_url =  \"https://10.139.3.15:8089\"\n      Add-Content $Filepath \"`nmaster_uri = $Splunk_url\"\n      Add-Content $Filepath \"`nmode = searchhead\"\n    }\n",
+  "envs": [
+    {
+      "prop": "Splunk_url",
+      "val": "https://WINSPKMN01:8089",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Filepath",
+      "val": "C:\\Program` `Files\\Splunk\\etc\\system\\local\\server.conf",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

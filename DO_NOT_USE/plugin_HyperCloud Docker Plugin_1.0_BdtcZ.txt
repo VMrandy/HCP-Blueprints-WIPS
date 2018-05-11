@@ -1,0 +1,12 @@
+{
+  "referenceId": "BdtcZ",
+  "version": "1.0",
+  "name": "HyperCloud Docker Plugin",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\necho \"Update Ubuntu\"\napt-get update\n\necho \"Uninstalling Docker\"\napt-get purge -y docker-engine\n\necho \"Installing Docker v1.13\"\napt-get install -y docker-engine\n\necho \"Installing HyperCloud Block Storage Docker Volume Plugin\"\ndocker plugin install --grant-all-permissions hypergrid/hypercloud:1.5",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

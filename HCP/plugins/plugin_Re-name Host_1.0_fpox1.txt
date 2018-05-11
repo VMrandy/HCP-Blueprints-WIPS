@@ -1,0 +1,12 @@
+{
+  "referenceId": "fpox1",
+  "version": "1.0",
+  "name": "Re-name Host",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Rename-Computer -NewName 'Veeam-Server' -Restart -Force",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

@@ -1,0 +1,25 @@
+{
+  "referenceId": "1UWR1",
+  "version": "1.0",
+  "name": "GlassFish Setup",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "dir",
+      "val": "/ROOT.war",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "file_url",
+      "val": "https://www.dropbox.com/s/2gvkno76tt22y3q/moviestore-0.1.0.BUILD-SNAPSHOT.war?dl=1",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

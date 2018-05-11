@@ -1,0 +1,19 @@
+{
+  "referenceId": "delM7",
+  "version": "1.0",
+  "name": "DCHQ Agent Upgrade",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "agent_url",
+      "val": "http://dchqcdn.azureedge.net/agentcontainer/DCHQ-Agent-3.0-SNAPSHOT-1476129367279.jar /tmp/DCHQ-Agent.jar",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

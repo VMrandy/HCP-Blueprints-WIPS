@@ -1,0 +1,12 @@
+{
+  "referenceId": "SDnvF",
+  "version": "1.0",
+  "name": "Sysprep Machine",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "c:\\windows\\system32\\sysprep\\sysprep.exe /generalize /oobe /reboot /unattend:C:\\opt\\dchq\\unattended_latest.xml",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

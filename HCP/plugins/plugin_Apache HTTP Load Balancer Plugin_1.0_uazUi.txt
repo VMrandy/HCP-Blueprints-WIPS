@@ -1,0 +1,19 @@
+{
+  "referenceId": "uazUi",
+  "version": "1.0",
+  "name": "Apache HTTP Load Balancer Plugin",
+  "license": "EULA",
+  "description": "HTTP Load Balancer.",
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "BalancerMembers",
+      "val": "BalancerMember http://{{AppServer | container_hostname}}:8080",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

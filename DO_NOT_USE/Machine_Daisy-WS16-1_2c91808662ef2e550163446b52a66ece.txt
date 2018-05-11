@@ -1,0 +1,16 @@
+{
+  "id": "2c91808662ef2e550163446b52a66ece",
+  "name": "Daisy-WS16-1",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Daisy WS16-1 Cloud Instance - Windows Server 2016\n1 vCPU | 4GB Memory | 60GB Flash Storage",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/micro.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

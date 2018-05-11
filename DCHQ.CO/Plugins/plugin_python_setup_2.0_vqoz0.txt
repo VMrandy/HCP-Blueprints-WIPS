@@ -1,0 +1,9 @@
+{
+  "referenceId": "vqOZ0",
+  "version": "2.0",
+  "name": "Python Setup",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\nexport $REDIS_IP\n\nmkdir /code\ncd /code\ncat << EOF >> requirements.txt\nflask\nredis\nEOF\n\ncat << EOF >> app.py\nfrom flask import Flask\nfrom redis import Redis\nimport os\napp = Flask(__name__)\nredis = Redis(host='$REDIS_IP', port=6379)\n\n@app.route('/')\ndef hello():\n    redis.incr('hits')\n    return 'Hello World! I have been seen %s times.' % redis.get('hits')\n\nif __name__ == \"__main__\":\n    app.run(host=\"0.0.0.0\", debug=True)\nEOF\n\npip install -r requirements.txt\npython app.py",
+  "envs": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2c9180885e30c590015ea12d260d2e4a",
+  "name": "PowerCLI",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "PowerCLI",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "GRID",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

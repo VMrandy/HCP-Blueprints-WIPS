@@ -1,0 +1,23 @@
+{
+  "id": "2c91800e502205c301504bfdd0e30617",
+  "name": "Cassandra Cluster",
+  "version": "latest",
+  "tags": "DEV",
+  "description": "Deploy's Cassandra Cluster. Minimum two nodes are deployed.",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "# \nCassandra-SEED:\n  image: cassandra:latest\n  \nCassandra-Nodes:\n  image: cassandra:latest\n  cluster_size: 1\n  environment:\n    - CASSANDRA_SEEDS={{Cassandra-SEED | container_ip}}",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

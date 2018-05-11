@@ -1,0 +1,19 @@
+{
+  "referenceId": "bB8Ty",
+  "version": "1.0",
+  "name": "SQL Install",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "$net = new-object -ComObject WScript.Network\n$net.MapNetworkDrive(\"T:\", \"\\\\10.0.1.19\\fs01\\ISO\", $false, \"skygrid\\pmathur\", \"$pass\")\nMount-DiskImage -ImagePath \"T:\\SQLServer2016SP1-FullSlipstream-x64-ENU.iso\" \n$volumes = Get-Volume\nforeach ( $vol in $volumes)\n{\n     if ($vol.FileSystemLabel -match \"SQL\")\n      {\n        Write-Host \"Success\"\n        $drive = $vol.DriveLetter\n        Break\n        }\n    }\n    $drive\n    ($drive + \":\\*\")\nif (Test-Path C:\\sql_2016){\n            Copy-Item -Path ($drive + \":\\*\") -Destination C:\\sql_2016 -Recurse\n            Copy-Item -Path T:\\ConfigurationFile.ini -Destination C:\\sql_2016\n            #Copy-Item -Path T:\\veeam_backup_nfr_0_6.lic -Destination C:\\veeam_software\n            }\nelse\n  {\n    md c:\\sql_2016\n    Copy-Item -Path ($drive + \":\\*\") -Destination C:\\sql_2016 -Recurse\n    Copy-Item -Path T:\\ConfigurationFile.ini -Destination C:\\sql_2016\n    #Copy-Item -Path T:\\veeam_backup_nfr_0_6.lic -Destination C:\\veeam_software\n    }    \n    \nDismount-DiskImage -ImagePath \"T:\\SQLServer2016SP1-FullSlipstream-x64-ENU.iso\"\n$net.RemoveNetworkDrive(\"T:\")\n\n$proc = Start-Process \"c:\\sql_2016\\setup.exe\" -ArgumentList '/ConfigurationFile=\"C:\\sql_2016\\ConfigurationFile.ini\"' -Wait -PassThru -erroraction stop\nwrite-host\"test\"\nif ($proc.exitcode -eq '0')\n{Write-Host \"SQL installed successfully\"}",
+  "envs": [
+    {
+      "prop": "pass",
+      "val": "6vDCTab3",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2c91808756b64ee70156c413ead27567",
+  "name": "NetBox",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "IP address management (IPAM) and data center infrastructure management (DCIM) tool.",
+  "shortDescription": "IP address management (IPAM) and data center infrastructure management (DCIM) tool.",
+  "externalLink": "https://github.com/irasnyd/netbox.git",
+  "imageLink": null,
+  "yml": "postgres:\n  image: postgres:9.6\n  environment:\n    - POSTGRES_USER=netbox\n    - POSTGRES_PASSWORD={{alphanumeric | 16}}\n    - POSTGRES_DB=netbox\nnetbox:\n  image: dchq/netbox:latest\n  publish_all: true\n  #ports:\n  #  - 80:80\n  environment:\n    - ALLOWED_HOSTS=localhost\n    - DB_NAME={{postgres | POSTGRES_DB}}\n    - DB_USER={{postgres | POSTGRES_USER}}\n    - DB_PASS={{postgres | POSTGRES_PASSWORD}}\n    - DB_HOST={{postgres | container_hostname}}\n    - DB_PORT=5432\n    - SECRET_KEY={{alphanumeric | 50}}\n    - LOGIN_REQUIRED=false\n    - MAINTENANCE_MODE=false\n    - EMAIL_SERVER=localhost\n    - EMAIL_PORT=25\n    - EMAIL_USERNAME=foo\n    - EMAIL_PASSWORD=bar\n    - EMAIL_TIMEOUT=10\n    - EMAIL_FROM=netbox@bar.com\n    - DEVICE_USERNAME=guest\n    - DEVICE_PASSWORD=guest",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865bb5819e015bcaae94f22686",
+  "name": "Pricing Tool PROD dchq user",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "This is the pricing tool.",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "version: '2'\n\nservices:\n  db:\n    image: mysql\n    volumes:\n      - MySql_Data_Store-1:/var/lib/mysql\n    environment:\n       MYSQL_DATABASE: djangotest\n       MYSQL_USER: root\n       MYSQL_ALLOW_EMPTY_PASSWORD: \"yes\"\n\n  web:\n    image: jdougharty1/my_private_repo:pricingtool_web_test\n    registry_id: 2c9180865bb5819e015bcab7789626a8\n    command: gunicorn --log-config config/logging.conf pricingtool.wsgi -w 2 -b 0.0.0.0:8000\n    volumes:\n      - static-1:/static\n    environment:\n      STAGE: CERT\n      DB_HOST: \"{{db | container_hostname}}\"\n    expose:\n      - \"8000\"\n    depends_on:\n      - db\n\n  nginx:\n    image: jdougharty1/my_private_repo:pricingtool_nginx_test\n    registry_id: 2c9180865bb5819e015bcab7789626a8\n    #publish_all: true\n    ports:\n      - \"80:80\"\n      - \"443:443\"\n    volumes:\n      - static-1:/static\n    depends_on:\n      - web\n    plugins:\n      - !plugin\n        id: 2JNda\n        restart: true\n        arguments:\n          - servers=server {{web | container_hostname}}:8000;\n        #lifecycle: on_create post_scale_out:web post_scale_in:web",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

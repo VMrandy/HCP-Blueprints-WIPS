@@ -1,0 +1,9 @@
+{
+  "referenceId": "SVPMI",
+  "version": "1.0",
+  "name": "Ruby Starter-Kit Setup Updated",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\ngit clone https://github.com/starterkits/rails4-starterkit.git\ncd /rails4-starterkit\ngit checkout foundation\nbundle install\ncd /rails4-starterkit/config\nmv database.yml database.yml.bak\nexport $POSTGRES_IP\nexport $POSTGRES_USER\nexport $POSTGRES_PASSWORD\nexport $POSTGRES_DB\ncat << EOF >> database.yml\ndevelopment:\n  adapter: postgresql\n  encoding: unicode\n  database: $POSTGRES_DB\n  pool: 5\n  username: $POSTGRES_USER\n  password: $POSTGRES_PASSWORD\n  host: $POSTGRES_IP\n  port: 5432\nEOF\ncd /rails4-starterkit\nrake db:setup\nrake db:migrate\nrails server",
+  "envs": []
+}

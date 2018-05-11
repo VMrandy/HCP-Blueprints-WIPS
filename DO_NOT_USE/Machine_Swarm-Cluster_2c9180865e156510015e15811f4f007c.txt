@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865e156510015e15811f4f007c",
+  "name": "Swarm-Cluster",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Swarm-Cluster",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

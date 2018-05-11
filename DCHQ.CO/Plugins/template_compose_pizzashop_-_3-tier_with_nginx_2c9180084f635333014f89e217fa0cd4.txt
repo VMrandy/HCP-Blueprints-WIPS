@@ -1,0 +1,8 @@
+{
+  "id": "2c9180084f635333014f89e217fa0cd4",
+  "name": "PizzaShop - 3-Tier with Nginx",
+  "version": "1.0-LB-Multi-Host-HA-Cluster",
+  "tags": null,
+  "description": null,
+  "yml": "LB:\n  image: nginx:latest\n  publish_all: true\n  mem_limit: 700m\n  host: host1\n  plugins:\n    - !plugin\n      id: 2c9180084f635333014f89e3d55b0ce6\n      restart: true\n      arguments:\n        - servers=server {{AppServer | container_ip}}:8080;\nAppServer:\n  image: tomcat:8.0.21-jre8\n  mem_limit: 1500m\n  host: host1, host2\n  cluster_size: 2\n  environment:\n    - database.driverClassName=com.mysql.jdbc.Driver\n    - database.url=jdbc:mysql://{{MySQL|container_ip}}:3306/{{MySQL|MYSQL_DATABASE}}\n    - database.username={{MySQL|MYSQL_USER}}\n    - database.password={{MySQL|MYSQL_ROOT_PASSWORD}}\n  plugins:\n    - !plugin\n      id: 2c9180ff4f33df5f014f347dc3750043\n      restart: true\n      arguments:\n        - file_url=https://dl.dropboxusercontent.com/u/4090128/pizzashop-0.1.0.BUILD-SNAPSHOT.war\nMySQL:\n  image: mysql:latest\n  host: host3\n  mem_limit: 700m\n  environment:\n    - MYSQL_USER=root\n    - MYSQL_DATABASE=pizzashop\n    - MYSQL_ROOT_PASSWORD={{alphanumeric|8}}"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2c918087626a6c3b01626d5548260a8f",
+  "name": "Oracle WebLogic 12c",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Oracle WebLogic 12c",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://i.imgur.com/VzYoCVX.png",
+  "yml": "AdminServer:\n  image: ismaleiva90/weblogic12:latest\n  ports:\n      - \"49163:7001\"\n      - \"49164:7002\"\n      - \"49165:5556\"\n\n# To Access:\n# http://localhost:49163/console\n# User: weblogic\n# Pass: welcome1",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [
+    {
+      "id": "2c91808762673caf0162675dc3db00d5",
+      "inactive": false,
+      "deleted": false,
+      "username": "hcta_production",
+      "firstname": "Tenant Admin",
+      "lastname": "Administrator"
+    }
+  ],
+  "entitledUserGroups": []
+}

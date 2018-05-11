@@ -1,0 +1,24 @@
+{
+  "id": "2c918087631393aa016338e029e54408",
+  "name": "CentOS 7 /S Puppet",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "CentOS 7 w/Puppet Agent  Small for VMware vSphere\n1 vCPU / 2GB Ram / 20GB Disk",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://10.0.9.20/repo/images/centos.png",
+  "yml": "Machine: \n  group: hg-hcp50-pup\n  region: SG-DC01\n  image: VMT-CentOS7\n  instanceType: cpu=1,memory=2GB,disk=20GB\n  affinity: true\n  network: SG-DC01-dpg-VM Network\n  skipAgentInstall: false\n  username: hf\n  password: HyperGrid123\n  count: 1\n  plugins:\n  - !plugin\n    id: C6DNk\n    restart: false",
+  "visibility": "READABLE",
+  "params": [
+    {
+      "label": "custom_label1",
+      "prop": "custom_param1",
+      "suggestion": "suggestion_1",
+      "mandatory": false,
+      "val": null
+    }
+  ],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

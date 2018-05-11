@@ -1,0 +1,16 @@
+{
+  "id": "2c91808762b637a70162e22d79f237f5",
+  "name": "Nginx (Swarm V3)",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Nginx test template for Swarm with repplicas",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://10.0.9.20/repo/images/docker_nginx.png",
+  "yml": "version: '3'\nservices:\n  LB:\n    image: nginx:latest\n    mem_min: 50m\n    cluster_size: 3\n    ports:\n      - 80:8895\n    deploy:\n      replicas: 2",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

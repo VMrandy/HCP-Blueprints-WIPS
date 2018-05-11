@@ -1,0 +1,28 @@
+{
+  "id": "2c9180c84dd94567014dd97a00910025",
+  "version": "1.0",
+  "name": "PizzaShop Service Download",
+  "license": "EULA",
+  "description": "Download and deploy latest WAR file for the PizzaShop app.",
+  "baseScript": "#!/bin/bash\nrm -rf $delete_dir\nwget $file_url -O $dir",
+  "envs": [
+    {
+      "prop": "dir",
+      "val": "/usr/local/tomcat/webapps/ROOT.war",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "delete_dir",
+      "val": "/usr/local/tomcat/webapps/ROOT",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "file_url",
+      "val": "https://dl.dropboxusercontent.com/u/4090128/pizzashop-0.1.0.BUILD-SNAPSHOT.war",
+      "hidden": false,
+      "eval": null
+    }
+  ]
+}

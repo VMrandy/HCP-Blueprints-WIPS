@@ -1,0 +1,16 @@
+{
+  "id": "2c91808662ef2e550163461a482e73c1",
+  "name": "W2K16 - VMware",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Windows Server 2016",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Machine: \n  group: daisy\n  region: HG-Datacenter\n  image: VMT-W2K16-DC-DAISY\n  instanceType: cpu=2,memory=4GB,disk=60GB\n  affinity: true\n  network: dvp-vlan-26\n  skipAgentInstall: true\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

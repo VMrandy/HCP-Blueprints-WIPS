@@ -1,0 +1,12 @@
+{
+  "referenceId": "hBtgw",
+  "version": "1.0",
+  "name": "Install PowerShellGet and PackageManagement",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Install-Module –Name PowerShellGet –Force –Verbose\nExit",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

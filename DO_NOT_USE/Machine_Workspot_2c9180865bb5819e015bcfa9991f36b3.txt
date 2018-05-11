@@ -1,0 +1,31 @@
+{
+  "id": "2c9180865bb5819e015bcfa9991f36b3",
+  "name": "Workspot",
+  "version": "1.0",
+  "tags": null,
+  "description": "Workspot VDIaaS on HyperCloud",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/workspot.jpeg",
+  "yml": "Windows2016: \n  group: windows\n  region: GS1410-0040\n  image: \\\\SMBShare01\\FS01\\Template\\Server2016HFTemplate.vhdx\n  instanceType: cpu=2,memory=8GB,disk=100GB,generation=1\n  network: Compute vmSwitch\n  skipAgentInstall: true\n  count: 1\n  plugins:\n    - !plugin\n      id: UXBJb\n      lifecycle: post_create\n      arguments:\n        - integration_key=1332d25de52efb7ee0fe69b1644fcc69b6cb2232",
+  "visibility": "HIDE",
+  "params": [
+    {
+      "label": "windows",
+      "prop": "VM Prefix",
+      "suggestion": "",
+      "mandatory": false,
+      "val": null
+    },
+    {
+      "label": "1332d25de52efb7ee0fe69b1644fcc69b6cb2232",
+      "prop": "Integration Key",
+      "suggestion": "",
+      "mandatory": false,
+      "val": null
+    }
+  ],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

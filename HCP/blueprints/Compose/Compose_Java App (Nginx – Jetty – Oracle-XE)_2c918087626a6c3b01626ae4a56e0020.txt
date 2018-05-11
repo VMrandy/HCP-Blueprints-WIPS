@@ -1,0 +1,16 @@
+{
+  "id": "2c918087626a6c3b01626ae4a56e0020",
+  "name": "Java App (Nginx – Jetty – Oracle-XE)",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "Nginx – Jetty – Oracle-XE",
+  "shortDescription": "3-tier single host - Nginx Jetty Oracle-XE",
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/database/oracle.png",
+  "yml": "LB:\n  image: nginx:latest\n  publish_all: true\n  mem_min: 50m\n  host: host1\n  plugins:\n    - !plugin\n      id: 0H1Nk\n      restart: true\n      arguments:\n        - servers=server {{AppServer | container_ip}}:8080;\nAppServer:\n  image: jetty:latest\n  mem_min: 600m\n  host: host1\n  cluster_size: 1\n  environment:\n    - database_driverClassName=oracle.jdbc.OracleDriver\n    - database_url=jdbc:oracle:thin:@//{{Oracle|container_ip}}:1521/{{Oracle|sid}}\n    - database_username={{Oracle|username}}\n    - database_password={{Oracle|password}}\n  plugins:\n    - !plugin\n      id: oncXN\n      restart: true\n      arguments:\n        - file_url=https://github.com/dchqinc/dchq-docker-java-example/raw/master/dbconnect.war\n        - dir=/var/lib/jetty/webapps/ROOT.war\n        - delete_dir=/var/lib/jetty/webapps/ROOT\nOracle:\n  image: wnameless/oracle-xe-11g:latest\n  host: host1\n  mem_min: 400m\n  environment:\n    - username=system\n    - password=oracle\n    - sid=xe",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "GLOBAL",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

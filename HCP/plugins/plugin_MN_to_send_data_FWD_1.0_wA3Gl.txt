@@ -1,0 +1,19 @@
+{
+  "referenceId": "wA3Gl",
+  "version": "1.0",
+  "name": "MN_to_send_data_FWD",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#Configure the master as a forwarder\n\n#$Filepath = \"C:\\Program` `Files\\Splunk\\etc\\system\\local\\outputs.conf\"\nAdd-Content $Filepath \"`r`n# Turn off indexing on the master\"\nAdd-Content $Filepath \"`n[indexAndForward]\"\nAdd-Content $Filepath \"`nindex = false\"\nAdd-Content $Filepath \"`n\" \nAdd-Content $Filepath \"`n[tcpout]\"\nAdd-Content $Filepath \"`ndefaultGroup = default-autolb-group\"\nAdd-Content $Filepath \"`nforwardedindex.filter.disable = true\"\nAdd-Content $Filepath \"`nindexAndForward = false\"\nAdd-Content $Filepath \"`n\" \nAdd-Content $Filepath \"`n[tcpout:default-autolb-group]\"\nAdd-Content $Filepath \"`nserver=WINSPKPN01:9997,WINSPKPN02:9997,WINSPKPN03:9997\"",
+  "envs": [
+    {
+      "prop": "Filepath",
+      "val": "C:\\Program` `Files\\Splunk\\etc\\system\\local\\outputs.conf",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

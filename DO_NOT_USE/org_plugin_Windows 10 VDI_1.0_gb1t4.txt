@@ -1,0 +1,67 @@
+{
+  "referenceId": "gb1t4",
+  "version": "1.0",
+  "name": "Windows 10 VDI",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "$content = @'\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<unattend xmlns=\"urn:schemas-microsoft-com:unattend\">\n    <settings pass=\"specialize\">\n        <component name=\"Microsoft-Windows-UnattendedJoin\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <Identification>\n                <Credentials>\n                    <Domain>$Domain</Domain>\n                    <Password>$SVC_Pwd</Password>\n                    <Username>$SVC-Account</Username>\n                </Credentials>\n                <JoinDomain>$Domain</JoinDomain>\n                <MachineObjectOU>$OU</MachineObjectOU>\n            </Identification>\n        </component>\n        <component name=\"Microsoft-Windows-Shell-Setup\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <ComputerName>$ComputerName</ComputerName>\n            <RegisteredOwner>$Owner</RegisteredOwner>\n            <RegisteredOrganization>$Organization</RegisteredOrganization>\n        <ProductKey>$Key</ProductKey>\n        </component>\n    </settings>\n    <settings pass=\"oobeSystem\">\n        <component name=\"Microsoft-Windows-Shell-Setup\" processorArchitecture=\"amd64\" publicKeyToken=\"31bf3856ad364e35\" language=\"neutral\" versionScope=\"nonSxS\" xmlns:wcm=\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n            <OOBE>\n        <HideEULAPage>true</HideEULAPage>\n        <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>\n        <HideOnlineAccountScreens>true</HideOnlineAccountScreens>\n        <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>\n        <NetworkLocation>Work</NetworkLocation>\n        <SkipUserOOBE>true</SkipUserOOBE>\n        <SkipMachineOOBE>true</SkipMachineOOBE>\n        <ProtectYourPC>3</ProtectYourPC>\n        </OOBE>\n            <UserAccounts>\n                <AdministratorPassword>\n                    <Value>$Local_Pwd</Value>\n                    <PlainText>true</PlainText>\n                </AdministratorPassword>\n                <LocalAccounts>\n                    <LocalAccount wcm:action=\"add\">\n                        <Password>\n                            <Value>$Local_Pwd</Value>\n                            <PlainText>true</PlainText>\n                        </Password>\n                        <Name>$Local-Admin</Name>\n                        <Group>Administrators;Users</Group>\n                        <DisplayName>admin</DisplayName>\n                    </LocalAccount>\n                </LocalAccounts>\n            </UserAccounts>\n        </component>\n    </settings>\n</unattend>\n'@\n\nNew-Item 'c:\\opt\\Unattend.xml' -type file -force -value $content\n\nStart-Process -FilePath 'C:\\Windows\\System32\\Sysprep\\sysprep.exe' -ArgumentList '/reboot /oobe /unattend:c:\\opt\\Unattend.xml'",
+  "envs": [
+    {
+      "prop": "Domain",
+      "val": "SKYGRID.CLOUD",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "SVC_Pwd",
+      "val": "HyperGrid123",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Key",
+      "val": "RNDG-X7WFJ-7RQV4-FH9CY-YWRC6",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Local-Admin",
+      "val": "Admin",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Organization",
+      "val": "HyperGrid",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Owner",
+      "val": "HyperGrid",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "SVC-Account",
+      "val": "Leostream_svc",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "OU",
+      "val": "OU=Virtual Desktops,OU=HyperGrid,DC=skygrid,DC=cloud",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Local_Pwd",
+      "val": "HyperGrid123",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

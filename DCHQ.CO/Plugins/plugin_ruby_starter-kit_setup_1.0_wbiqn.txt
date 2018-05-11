@@ -1,0 +1,12 @@
+{
+  "referenceId": "wbIQn",
+  "version": "1.0",
+  "name": "Ruby Starter-Kit Setup",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\ncd /myapp/config/\nmv database.yml database.yml.bak\nexport $POSTGRES_IP\nexport $POSTGRES_USER\nexport $POSTGRES_PASSWORD\nexport $POSTGRES_DB\ncat << EOF >> database.yml\ndevelopment:\n  adapter: postgresql\n  encoding: unicode\n  database: $POSTGRES_DB\n  pool: 5\n  username: $POSTGRES_USER\n  password: $POSTGRES_PASSWORD\n  host: $POSTGRES_IP\n  port: 5432\nEOF\n\nsed -i \"s/localhost/$REDIS_IP/g\" /myapp/config/application.yml\n\ncd /myapp/\nrake db:setup\nrake db:migrate",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

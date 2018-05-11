@@ -1,0 +1,16 @@
+{
+  "id": "2c91808662ebf7940162edde27560613",
+  "name": "Ubuntu 16.04 /M",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Ubuntu 16.04 / Medium for VMware  vSphere         \n2 vCPU / 4GB Ram / 50GB Disk",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/blob/master/ubuntu.png?raw=true",
+  "yml": "Machine: \n  group: pwcdemo\n  region: HG-Datacenter\n  image: HC Ubuntu 16 Template\n  instanceType: cpu=2,memory=4GB,disk=50GB\n  affinity: true\n  network: dvp-vlan-26\n  skipAgentInstall: false  \n  username: hc\n  password: HyperGrid123 \n  count: 1 ",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

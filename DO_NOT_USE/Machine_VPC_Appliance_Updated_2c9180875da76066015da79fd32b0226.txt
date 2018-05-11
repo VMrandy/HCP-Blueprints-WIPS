@@ -1,0 +1,16 @@
+{
+  "id": "2c9180875da76066015da79fd32b0226",
+  "name": "VPC_Appliance_Updated",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "test",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,32 @@
+{
+  "id": "2c91802051ab66610151b796f8810199",
+  "name": "PostgreSQL DB",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "",
+  "shortDescription": "PostgreSQL",
+  "externalLink": "",
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/database/postgre.png",
+  "yml": "Postgres:\n  image: postgres:latest\n  publish_all_ports: true\n  environment:\n    - POSTGRES_USER=dchq\n    - POSTGRES_PASSWORD={{alphanumeric | 8}}\n    - POSTGRES_DB=dchq",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [
+    {
+      "id": "2c9180875abbea51015b2591ac06203d",
+      "inactive": false,
+      "deleted": false,
+      "username": "indra.varakantham",
+      "firstname": "Indrasena",
+      "lastname": "Varakantham"
+    }
+  ],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

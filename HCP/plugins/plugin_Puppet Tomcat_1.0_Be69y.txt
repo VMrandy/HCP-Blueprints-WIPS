@@ -1,0 +1,19 @@
+{
+  "referenceId": "Be69y",
+  "version": "1.0",
+  "name": "Puppet Tomcat",
+  "license": "EULA",
+  "description": "Puppet Tomcat",
+  "baseScript": "#!/bin/bash\n\nAPP1_IP=`cat /home/ubuntu/app1_ip`\nAPP2_IP=`cat /home/ubuntu/app2_ip`\nAPP3_IP=`cat /home/ubuntu/app3_ip`\n\nAPP2_DB_IP=\"$APP_DB_IP\"\n\nAPP3_WAR_URL='https://www.dropbox.com/s/x0ewbc6dfj9cu5w/spring-jpa-postgresql-angularjs-0.0.1-SNAPSHOT.war?dl=1'\ncurl -L -o /home/ubuntu/app.war \"$APP3_WAR_URL\"\necho \"$APP_WAR_URL\" > /home/ubuntu/war_url\n\nFILE=\"/home/ubuntu/tom.pp\"\n/bin/cat <<EOM >$FILE\n\ntomcat::install { '/opt/tomcat9':\n  source_url => 'https://www.apache.org/dist/tomcat/tomcat-9/v9.0.6/bin/apache-tomcat-9.0.6.tar.gz'\n}\ntomcat::instance { 'default':\n  catalina_home => '/opt/tomcat9',\n  catalina_base => '/opt/tomcat9',\n}\ntomcat::setenv::entry { 'default':\n  config_file => '/opt/tomcat9/bin/setenv.sh',\n  param          => 'CLASSPATH',\n  value\t\t => '\\$CLASSPATH:/home/ubuntu/'\n}\n#tomcat::setenv::entry { 'default':\n#  config_file => '/opt/tomcat9/bin/setenv.sh',\n#  param          => 'JAVA_OPTS',\n#  value\t\t => '\\\"\\$JAVA_OPTS -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true\\\"'\n#}\n# Change the default port of the second instance server and HTTP connector\ntomcat::config::server { 'default':\n  catalina_base => '/opt/tomcat9',\n  port          => '8181',\n}\ntomcat::war { 'app.war':\n  catalina_base => '/opt/tomcat9',\n  war_source    => '/home/ubuntu/app.war',\n}\n\n\nEOM\n\nPUPPET_AGENT_DEB=\"https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\"\nwget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\nsudo dpkg -i puppetlabs-release-pc1-xenial.deb\nsudo apt update && sudo apt -y install puppet-agent\n\necho \"export PATH=/opt/puppetlabs/bin:$PATH\"\nsudo -i puppet module install puppetlabs-tomcat\nsudo -i puppet apply $FILE\nsleep 120\nAPP4_IP=`cat /home/ubuntu/app4_ip`\nPROP_FILE=\"/home/ubuntu/application-myapp.properties\"\n/bin/cat <<EOM >$PROP_FILE\nspring.datasource.url=jdbc:postgresql://APP2_DB_IP/test_sample\nspring.datasource.username=postgres\nspring.datasource.password=root123\nspring.jpa.generate-ddl=true\n\nspring.mvc.view.prefix = /WEB-INF/jsps/\nspring.mvc.view.suffix = .jsp\n\nEOM\n\nsed -i \"s/APP2_DB_IP/$APP4_IP/g\" /home/ubuntu/application-myapp.properties\nexport CATALINA_BASE=/opt/tomcat9\nexport CATALINA_HOME=/opt/tomcat9\ncd /opt/tomcat9\nsleep 2\nsudo $CATALINA_HOME/bin/catalina.sh stop\nsleep 3\ntom_pid=`ps -ef | grep tomcat | grep -v grep | grep -v restart | awk '{print $2}'`\nif [ ! -z \"$tom_pid\" -a \"$tom_pid\" != \" \" ]; then\n        sudo kill -9 $tom_pid\nfi\nsleep 3\nsudo $CATALINA_HOME/bin/catalina.sh start\n",
+  "envs": [
+    {
+      "prop": "servers",
+      "val": "server {{AppServer | container_hostname}}:8080;",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

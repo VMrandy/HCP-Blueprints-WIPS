@@ -1,0 +1,16 @@
+{
+  "id": "2c9180876224de5201623fdad04c2944",
+  "name": "RHEL7.3 / VMW",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "RHEL 7.3 on VMware Platform",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://10.0.9.20/repo/images/RedHatServer.png",
+  "yml": "Machine: \n  group: sprint\n  region: HG-Datacenter\n  image: RHEL_7.3_HCT_SOFTBANK\n  instanceType: cpu=2,memory=2GB,disk=100GB\n  affinity: true\n  network: dvp-vlan-2026\n  skipAgentInstall: true\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

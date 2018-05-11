@@ -1,0 +1,31 @@
+{
+  "referenceId": "qhMB0",
+  "version": "2.0",
+  "name": "Download file",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "dir",
+      "val": "/usr/local/tomcat/webapps/ROOT.war",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "delete_dir",
+      "val": "/usr/local/tomcat/webapps/ROOT",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "file_url",
+      "val": "--auth-no-challenge --http-user=dchq --http-password=d7d12c4ddc887c5c56f6564ff744c2eb http://148.251.192.17:32769/job/DCHQ%20NotificationService%20JDK7/ws/build/libs/notification-0.0.1-SNAPSHOT.war",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

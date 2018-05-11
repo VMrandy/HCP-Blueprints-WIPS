@@ -1,0 +1,16 @@
+{
+  "id": "2c91808762b637a70162e22e0fd837f6",
+  "name": "Oracle (swarm v3)",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Swarm Test using Compose v3",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

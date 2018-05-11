@@ -1,0 +1,12 @@
+{
+  "referenceId": "IXwZu",
+  "version": "1.0",
+  "name": "puppet-agent-windows",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "msiexec /qn /norestart /l*v c:/opt/dchq/log/puppet.log /i https://downloads.puppetlabs.com/windows/puppet-agent-x64-latest.msi",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

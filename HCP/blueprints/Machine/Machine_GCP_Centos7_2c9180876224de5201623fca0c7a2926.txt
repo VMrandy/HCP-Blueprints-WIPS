@@ -1,0 +1,16 @@
+{
+  "id": "2c9180876224de5201623fca0c7a2926",
+  "name": "GCP_Centos7",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "GCP Centos 7",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "http://bit.ly/2u3kTTi",
+  "yml": "Machine: \n  group: sprint\n  region: asia-northeast1-a\n  image: https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20180227\n  instanceType: n1-standard-4\n  affinity: true\n  network: test-subnet-5\n  securityGroup: test-allow-all\n  keyPair: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDBfo/Pr3KWXnvGAIUlBTyIZp/H2yUU4uVA/qPAK+ktch3wgxvaoodH5tl7ISlD9yIHsuV6j8LSYeK4N/FLxKmnW+Tn5wG/IErZ6ZrkJFRIGnB/Whj5ohjMPL9v/g5F93A+yBj0KDHwo7a+RNWEsIjtNb1McLlDjRJ2Fc8JSd6K8w==\n  skipAgentInstall: false\n  username: sprint\n  password: \"{{credentials | 2c918087624f01fa01624fe9f21c0266 }}\"\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2c918087626a6c3b01626ba4a6300303",
+  "name": "Websphere-Postgres V3",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Websphere-Postgres Compose V3 BP",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "version: '3'\n\nservices:\n  AppServer:\n     image: websphere-liberty:webProfile6\n     publish_all: true\n     mem_min: 600m\n     host: host1\n     cluster_size: 1\n     environment:\n       - database_driverClassName=org.postgresql.Driver\n       - database_url=jdbc:postgresql://{{Postgres|container_ip}}:5432/{{Postgres|POSTGRES_DB}}\n       - database_username={{Postgres|POSTGRES_USER}}\n       - database_password={{Postgres|POSTGRES_PASSWORD}}\n       - LICENSE=accept\n     plugins:\n       - !plugin\n         id: rPuVb\n         restart: true\n         arguments:\n           - file_url=https://github.com/dchqinc/dchq-docker-java-example/raw/master/dbconnect.war\n           - dir=/opt/ibm/wlp/usr/servers/defaultServer/dropins/dbconnect.war\n           - delete_dir=/opt/ibm/wlp/usr/servers/defaultServer/dropins/dbconnect\n  Postgres:\n     image: postgres:latest\n     host: host1\n     mem_min: 400m\n     environment:\n       - POSTGRES_USER=root\n       - POSTGRES_PASSWORD={{alphanumeric | 8}}\n       - POSTGRES_DB=names\n",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [
+    {
+      "id": "2c918087627078990162722ca4a809a8",
+      "inactive": false,
+      "deleted": false,
+      "username": "tuser",
+      "firstname": "FName",
+      "lastname": "LName"
+    }
+  ],
+  "entitledUserGroups": []
+}

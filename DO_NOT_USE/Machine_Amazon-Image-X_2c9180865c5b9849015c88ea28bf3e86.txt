@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865c5b9849015c88ea28bf3e86",
+  "name": "Amazon-Image-X",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "ajdlajfkdjaf",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

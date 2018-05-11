@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865deb1035015def02b99e0d8b",
+  "name": "{VMware} CentOS7",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "CentOS 7 w/ agent install on VMware vSphere\n2 vCPU/8GB 100GB",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/centOS.png",
+  "yml": "Machine: \n  group: hclin\n  region: HG-Datacenter\n  image: VMT-CentOS7\n  instanceType: cpu=2,memory=8GB,disk=100GB\n  network: dvp-vlan-26\n  skipAgentInstall: false\n  username: root\n  password: HyperGrid123\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,8 @@
+{
+  "id": "2c9180ff4f33df5f014f3498cdd10066",
+  "name": "Apache-MySQL-Drupal",
+  "version": "1",
+  "tags": null,
+  "description": "Please start the install by navigating to http://<IP>:<Port>/install.php",
+  "yml": "mysql:  \n  image: mysql:latest\n  mem_limit: 1g\n  cpu_shares: 1\n  environment:\n    - MYSQL_USER=root\n    - MYSQL_DATABASE=drupal_db\n    - MYSQL_ROOT_PASSWORD=admin123\nweb:  \n  image: drupal:latest\n  mem_limit: 2g\n  cpu_shares: 1\n  publish_all: true\n  links:\n    - mysql\n  plugins:\n    - !plugin\n      id: 2c9180ff4f33df5f014f347f1de70045\n  environment:\n    - MYSQL_DATABASE={{mysql|MYSQL_DATABASE}}\n    - MYSQL_USER={{mysql | MYSQL_USER}}\n    - MYSQL_ROOT_PASSWORD={{mysql | MYSQL_ROOT_PASSWORD}}\n    - MYSQL_HOST={{mysql|container_ip}}"
+}

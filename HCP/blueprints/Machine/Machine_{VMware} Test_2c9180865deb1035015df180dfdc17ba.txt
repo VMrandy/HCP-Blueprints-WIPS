@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865deb1035015df180dfdc17ba",
+  "name": "{VMware} Test",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Test Windows Server 2016 w/ agent & Domain join",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/micro.png",
+  "yml": "Machine: \n  group: test-hcwin\n  region: HG-Datacenter\n  image: VMT-W2K16-DC-200v2\n  instanceType: cpu=2,memory=16GB,disk=40GB\n  network: dvp-vlan-26\n  skipAgentInstall: true\n  count: 1\n  plugins:   \n    - !plugin\n      id: SDnvF",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

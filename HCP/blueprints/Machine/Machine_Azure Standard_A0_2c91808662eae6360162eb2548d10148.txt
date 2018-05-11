@@ -1,0 +1,16 @@
+{
+  "id": "2c91808662eae6360162eb2548d10148",
+  "name": "Azure Standard_A0",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Azure Ubuntu 16 on Standard_A0 instance in UK South Region",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/blob/master/azure.png?raw=true",
+  "yml": "Machine: \n  group: pwcdemo\n  region: uksouth\n  image: Canonical:UbuntuServer:16.04-LTS\n  instanceType: Standard_A0\n  iamRole: PWCdemo\n  affinity: true\n  network: PWCdemo\n  subnet: PWCdemo\n  securityGroup: PWCdemo\n  skipAgentInstall: false\n  username: hc\n  password: HyperGrid123\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "2c91800b501c98fc01501cddb0140626",
+  "name": "Hazelcast",
+  "version": "latest",
+  "tags": "DEV",
+  "description": "In-Memory Data Grid ⋅ JCache Provider ⋅ Apache 2 License\nSmall jar with minimal dependencies ⋅ Embedded or Client Server",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/database/hazel.png",
+  "yml": "Hazlecast:\n  image: hazelcast/hazelcast\n  publish_all_ports: true",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

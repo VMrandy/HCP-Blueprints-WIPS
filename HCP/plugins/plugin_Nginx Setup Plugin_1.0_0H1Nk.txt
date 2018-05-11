@@ -1,0 +1,19 @@
+{
+  "referenceId": "0H1Nk",
+  "version": "1.0",
+  "name": "Nginx Setup Plugin",
+  "license": "EULA",
+  "description": "Nginx Setup.",
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "servers",
+      "val": "server {{AppServer | container_hostname}}:8080;",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

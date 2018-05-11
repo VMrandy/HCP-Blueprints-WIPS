@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865bb5819e015bf4f014077bfd",
+  "name": "SQL Server 2016",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "SQL-as-a-service with HyperCloud",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

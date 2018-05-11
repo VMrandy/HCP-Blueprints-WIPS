@@ -1,0 +1,23 @@
+{
+  "id": "2c9180865644050001564c6431fd629d",
+  "name": "Jenkins",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Jenkins",
+  "shortDescription": "Port 50000 & 8080 mappings",
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/APP/cdi.png",
+  "yml": "Jenkins:\n  image: jenkins:latest\n  mem_limit: 2g\n  #ports:\n  #  - 8080:8080\n  #  - 50000:50000\n  publish_all_ports: true\n  volumes:\n    - jenkins-vol:/var/jenkins_home",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

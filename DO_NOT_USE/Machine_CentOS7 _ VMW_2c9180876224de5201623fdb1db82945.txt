@@ -1,0 +1,16 @@
+{
+  "id": "2c9180876224de5201623fdb1db82945",
+  "name": "CentOS7 / VMW",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "CentOS 7 on VMware Platform",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://i.imgur.com/kyl0kfh.png",
+  "yml": "Machine: \n  group: sprint\n  region: HG-Datacenter\n  image: CentOS_7_HCT_Softbank\n  instanceType: cpu=2,memory=2GB,disk=100GB\n  affinity: true\n  network: dvp-vlan-1026\n  skipAgentInstall: true\n  count: 1          ",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

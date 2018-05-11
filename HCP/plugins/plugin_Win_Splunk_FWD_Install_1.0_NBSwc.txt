@@ -1,0 +1,12 @@
+{
+  "referenceId": "NBSwc",
+  "version": "1.0",
+  "name": "Win_Splunk_FWD_Install",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "$url = \"https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=windows&version=6.6.1&product=universalforwarder&filename=splunkforwarder-6.6.1-aeae3fe0c5af-x64-release.msi&wget=true\"\n$output = \"$PSScriptRoot\\splunkforwarder-6.6.1-aeae3fe0c5af-x64-release.msi\"\n$start_time = Get-Date\n\n$wc = New-Object System.Net.WebClient\n$wc.DownloadFile($url, $output)\n\nWrite-Output \"Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)\"\nmsiexec.exe /i $PSScriptRoot\\splunkforwarder-6.6.1-aeae3fe0c5af-x64-release.msi AGREETOLICENSE=Yes LAUNCHSPLUNK=1 INSTALL_SHORTCUT=1 /quiet",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

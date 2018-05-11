@@ -1,0 +1,16 @@
+{
+  "id": "2c9180866298794c0162fed6bc9459d9",
+  "name": "GCP DEBUG",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Fully Configured Splunk Enterprise - backed by HyperCloud all-flash storage",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/PROP/splunk.png",
+  "yml": "GCP_Auth:\n  image: alpine:latest\n  publish_all: true\n  plugins:\n    - !plugin\n      id: OkwTK\n      restart: true\n      lifecycle: exec_on_machine, pre_create",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

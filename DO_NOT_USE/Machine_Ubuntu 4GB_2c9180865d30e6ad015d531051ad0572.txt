@@ -1,0 +1,24 @@
+{
+  "id": "2c9180865d30e6ad015d531051ad0572",
+  "name": "Ubuntu 4GB",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Ubuntu 14.04 with 4GB of Memory and 2 vCPUs",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/ubuntu.png",
+  "yml": "Ubuntu4G: \n  group: ubuntu\n  image: C:\\ClusterStorage\\HyperCloud_Templates\\Default\\Ubuntu14HFTemplate.vhdx\n  instanceType: cpu=1,memory=4GB,disk=20GB,generation=1\n  network: Compute vmSwitch,vlanId=10\n  skipAgentInstall: true\n  count: 1",
+  "visibility": "READABLE",
+  "params": [
+    {
+      "label": "VM Prefix",
+      "prop": "Ubuntu4G.group",
+      "suggestion": "ubuntu",
+      "mandatory": false,
+      "val": null
+    }
+  ],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

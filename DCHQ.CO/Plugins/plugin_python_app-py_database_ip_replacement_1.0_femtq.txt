@@ -1,0 +1,19 @@
+{
+  "referenceId": "FemTq",
+  "version": "1.0",
+  "name": "Python app-py Database IP Replacement",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\nsed -i \"s/MONGO_IP/$MONGO_IP/\" app.py ",
+  "envs": [
+    {
+      "prop": "MONGO_IP",
+      "val": "{{db | container_private_ip}}",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

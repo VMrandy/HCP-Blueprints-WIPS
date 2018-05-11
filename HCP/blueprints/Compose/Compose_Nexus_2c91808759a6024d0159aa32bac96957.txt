@@ -1,0 +1,23 @@
+{
+  "id": "2c91808759a6024d0159aa32bac96957",
+  "name": "Nexus",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "After deployment to to http://ip:port/nexus",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/APP/dc3.png",
+  "yml": "services:\n  Nexus:\n    image: sonatype/nexus:oss\n    #publish_all_ports: true\n    ports:\n      - 32900:8081",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

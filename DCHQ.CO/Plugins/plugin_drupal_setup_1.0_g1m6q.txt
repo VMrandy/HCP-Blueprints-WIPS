@@ -1,0 +1,9 @@
+{
+  "referenceId": "g1m6Q",
+  "version": "1.0",
+  "name": "Drupal Setup",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\ncp /var/www/html/sites/default/default.settings.php /var/www/html/sites/default/settings.php \n\necho \"\\$databases = array (\n  'default' =>\n  array (\n    'default' =>\n    array (\n      'database' => \\\"$MYSQL_DATABASE\\\",\n      'username' => \\\"$MYSQL_USER\\\",\n      'password' => \\\"$MYSQL_ROOT_PASSWORD\\\",\n      'host' => \\\"$MYSQL_HOST\\\",\n      'driver' => \\\"mysql\\\",\n      'prefix' => \\\"\\\",\n    ),\n  ),\n);\n\n\" >> /var/www/html/sites/default/settings.php",
+  "envs": []
+}

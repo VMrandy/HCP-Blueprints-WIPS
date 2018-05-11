@@ -1,0 +1,31 @@
+{
+  "referenceId": "8BLG4",
+  "version": "1.0",
+  "name": "Veeam Vcenter Config",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "ping $Vcenter_Server_Name\n& 'C:\\Program Files\\Veeam\\Console\\Install-VeeamToolkit.ps1'\n& 'c:\\Program Files\\Veeam\\Backup and Replication\\Console\\Initialize-VeeamToolkit.ps1'\ncls\nGet-VBRServer\nWrite-Host \"Start executing\"\nAdd-VBRvCenter -Name '$Vcenter_Server_Name' -User '$username' -Password '$password'\nWrite-Host \"End executing\"",
+  "envs": [
+    {
+      "prop": "username",
+      "val": "skygrid\\pmathur",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Vcenter_Server_Name",
+      "val": "10.0.1.25",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "password",
+      "val": "6vDCTab3",
+      "hidden": true,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

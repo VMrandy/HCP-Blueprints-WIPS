@@ -1,0 +1,23 @@
+{
+  "id": "2c918087625e88560162641c30be1514",
+  "name": "AWS Ubuntu 14 T2 Medium",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Ubuntu 14 deployed on a T2 Medium Instance in Frankfurt, Germany",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://i.imgur.com/nOkZtLl.png",
+  "yml": "Machine: \n  group: sprint\n  region: eu-central-1\n  image: ami-fa2fb595\n  instanceType: t2.medium\n  affinity: true\n  network: subnet-d1092a9b\n  securityGroup: sg-2ec42547\n  keyPair: softbank-poc\n  skipAgentInstall: false\n  username: ubuntu\n  password: \"{{credentials | 2c918087625e8856016263edc3f313f7 }}\"\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180876224de5201623fe962ab2965",
+      "inactive": false,
+      "deleted": false,
+      "name": "sprintgroup"
+    }
+  ]
+}

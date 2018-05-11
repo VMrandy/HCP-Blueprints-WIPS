@@ -1,0 +1,55 @@
+{
+  "referenceId": "Cmz09",
+  "version": "1.0",
+  "name": "Set Static IP",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "<#######################################################################\n.SYNOPSIS\n  Configure static IP Address\n.DESCRIPTION\n  VM Deployment Plugin\n  Copyright (c) 2017 by Hypergrid Inc.\n.NOTES\n  Version\t\t:\t4.2.0.0\n  Author\t\t:\tMohit Kshirsagar\n  Creation Date\t:  \t09/08/2017\n  Purpose/Change: \tUpdated Print statement for Success. \n\t\t\t\t\tChecking in bitbucket for 4.2 final update\n  Dependancies\t: \tPowerShell 4.0 or above\n########################################################################>\n \n[cmdletbinding(SupportsShouldProcess)]\nParam(\n[Parameter (Position = 0,Mandatory,\n# HelpMessage = \"Enter the name of the virtual machine\")]\n[ValidateNotNullorEmpty()]\n[string]$VMName,\n\n[Parameter (Position = 1,Mandatory,\n#HelpMessage = \"Enter the name of the virtual switch\")]\n[ValidateNotNullorEmpty()]\n[string]$VMSwitch,\n\n[Parameter (Position = 2,Mandatory,\n#HelpMessage = \"Update existing virtual switch or attach and update IP\")]\n[bool]$UpdateExisting = $true,\n\n[Parameter (Position = 3,Mandatory,\n#HelpMessage = \"Enter the IP Address\")]\n[ValidateScript({$_ -match [IPAddress]$_ })]  \n[string]$IPAddress,\n\n[Parameter (Position = 4,Mandatory,\n#HelpMessage = \"Enter the Subnet mask\")]\n[ValidateScript({$_ -match [IPAddress]$_ })] \n[string]$SubnetMask,\n\n[Parameter (Position = 5,\n#HelpMessage = \"Enter the VLAN ID, 0 = no VLAN\")]\n[ValidateNotNullorEmpty()]\n[int]$VLAN = 0,\n\n[Parameter (Position = 6,\n#HelpMessage = \"Enter the Gateway\")]\n[ValidateScript({$_ -match [IPAddress]$_ })] \n[string]$Gateway,\n\n[Parameter (Position = 7,\n#HelpMessage = \"Enter the DNS (separated by ,)\")]\n[string]$DNS\n)\n\nWrite-Host \"Setting VM $VMName with to adapter: $VMSwitch\"\nIf ($UpdateExisting -eq $false) {\n    $VMNetAdapter = Add-VMNetworkAdapter -VMName $VMName -SwitchName $VMSwitch\n\t} else {\n    $VMNetAdapters = (Get-VMNetworkAdapter -VMName $VMName)\n    foreach ($NetAdapter in $VMNetAdapters) {\n        if ($NetAdapter.SwitchName -eq $VMSwitch) {\n            $VMNetAdapter = $NetAdapter\n        }\n\n    }\n}\n\n$VMNetAdapter\nif ($VLAN -ne 0) {    \n    Infpt \"Setting to VLAN: $Vlan\" \n    $VMNetAdapter | Set-VMNetworkAdapterVlan -Access -VlanId $VLAN\n\t}\n\n$VM = Get-WmiObject -Namespace 'root\\virtualization\\v2' -Class 'Msvm_ComputerSystem' | Where-Object { $_.ElementName -eq $VMName } \n$VMSettings = $vm.GetRelated('Msvm_VirtualSystemSettingData') | Where-Object { $_.VirtualSystemType -eq 'Microsoft:Hyper-V:System:Realized' }    \n$VMNetAdapters = $VMSettings.GetRelated('Msvm_SyntheticEthernetPortSettingData') \n\n$NetworkSettings = @()\nforeach ($NetAdapter in $VMNetAdapters) {\n\tif ($NetAdapter.Address -eq $VMNetAdapter.MacAddress) {\n\t\t$NetworkSettings = $NetworkSettings + $NetAdapter.GetRelated(\"Msvm_GuestNetworkAdapterConfiguration\")\n\t}\n}\n\n$NetworkSettings\n\n$NetworkSettings[0].IPAddresses = $IPAddress\n$NetworkSettings[0].Subnets = $SubnetMask\n$NetworkSettings[0].DefaultGateways = $Gateway\n$NetworkSettings[0].DNSServers = $DNS.Split(',')\n$NetworkSettings[0].ProtocolIFType = 4096\n$NetworkSettings[0].DHCPEnabled = $false\n\n$Service = Get-WmiObject -Class \"Msvm_VirtualSystemManagementService\" -Namespace \"root\\virtualization\\v2\"\n$setIP = $Service.SetGuestNetworkAdapterConfiguration($VM, $NetworkSettings[0].GetText(1))\n\nif ($setip.ReturnValue -eq 4096) {\n    $job=[WMI]$setip.job \n\n    while ($job.JobState -eq 3 -or $job.JobState -eq 4) {\n            start-sleep 1\n            $job=[WMI]$setip.job\n        }\n\n        if ($job.JobState -eq 7) {\n            write-host \"Success\"\n\t\t\t} else {\n            $job.GetError()\n\t\t\t}\n    } elseif($setip.ReturnValue -eq 0) {\n    Infpt \"Configured IP Address for $VMName Successfully\"\n    }",
+  "envs": [
+    {
+      "prop": "VMswitch",
+      "val": "{Virtual Switch}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "IPAddress",
+      "val": "{IP Address}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "VMname",
+      "val": "{hostname}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "SubnetMask",
+      "val": "{Subnet Mask}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Update Existing",
+      "val": "True/False",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "Gateway",
+      "val": "{Gateway}",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "DNS",
+      "val": "{Comma separated for multiple DNS servers)",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

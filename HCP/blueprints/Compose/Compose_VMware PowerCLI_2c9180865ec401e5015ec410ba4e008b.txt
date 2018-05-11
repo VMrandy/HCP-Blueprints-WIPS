@@ -1,0 +1,16 @@
+{
+  "id": "2c9180865ec401e5015ec410ba4e008b",
+  "name": "VMware PowerCLI",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "PowerCLI Core uses Microsoft PowerShell Core and .Net Core to enable users of VMware Photon OS, Linux, Mac and Docker to now use the same cmdlets which were previously only available on windows.\n\nPowerCLI Core enables a multi-platform scripting language which will allow you to manage your VMware infrastructure on any OS. Scripts written previously against the windows version are now made portable to a number of operating systems and can simply be loaded and run on these new OS versions without change.\n\nPowerCLI Core can be downloaded from the VMware Flings site here and used with he below instructions to be deployed.",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/ubuntu.png",
+  "yml": "powerclicore:\n  image: vmware/powerclicore:latest",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

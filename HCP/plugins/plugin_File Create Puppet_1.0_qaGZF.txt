@@ -1,0 +1,25 @@
+{
+  "referenceId": "qaGZF",
+  "version": "1.0",
+  "name": "File Create Puppet",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "file { '/tmp/dchq.bkp2':\n    ensure => \"file\",\n    owner  => \"root\",\n    group  => \"root\",\n    mode   => \"700\",\n    content => \"Congratulations! Puppet has created this file on $hostname and user:$user.\",\n}",
+  "envs": [
+    {
+      "prop": "user",
+      "val": "intesar",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "hostname",
+      "val": "test",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "PUPPET",
+  "timeout": 30
+}

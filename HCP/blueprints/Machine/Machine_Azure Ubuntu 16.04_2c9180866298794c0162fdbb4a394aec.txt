@@ -1,0 +1,16 @@
+{
+  "id": "2c9180866298794c0162fdbb4a394aec",
+  "name": "Azure Ubuntu 16.04",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Customized Blueprint for Azure",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/micro.png",
+  "yml": "Ubuntu: \n  #name: demo4111\n  group: azuredemo1\n  region: centralus\n  image: Canonical:UbuntuServer:14.04.4-LTS:14.04.201602220\n  instanceType: Standard_D1_v2\n  resourceGroup: demo1234\n  storageAccount: demo1234dchq\n  network: demo1234\n  subnet: default\n  securityGroup: demo1234\n  affinity: demo1234\n  assignFloatingIP: true\n  skipAgentInstall: false\n  username: dchq\n  password: DCHQ1234!\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

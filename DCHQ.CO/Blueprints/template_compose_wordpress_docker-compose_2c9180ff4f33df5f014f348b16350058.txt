@@ -1,0 +1,8 @@
+{
+  "id": "2c9180ff4f33df5f014f348b16350058",
+  "name": "Wordpress Docker-Compose",
+  "version": "1.0",
+  "tags": null,
+  "description": "Wordpress Docker-Compose",
+  "yml": "Wordpress:\n  image: wordpress:latest\n  mem_limit: 1g\n  publish_all: true\n  environment:\n  - WORDPRESS_DB_PASSWORD={{MySQL|MYSQL_ROOT_PASSWORD}}\n  - WORDPRESS_DB_HOST={{MySQL|container_ip}}:3306\n  - WORDPRESS_DB_USER={{MySQL|MYSQL_USER}}\n  - WORDPRESS_DB_NAME={{MySQL|MYSQL_DATABASE}}\nMySQL:\n  image: mysql:latest\n  mem_limit: 1g\n  publish_all: false\n  environment:\n  - MYSQL_USER=root\n  - MYSQL_DATABASE=wordpress\n  - MYSQL_ROOT_PASSWORD={{alphanumeric | 12}}"
+}

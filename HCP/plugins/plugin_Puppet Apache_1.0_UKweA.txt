@@ -1,0 +1,19 @@
+{
+  "referenceId": "UKweA",
+  "version": "1.0",
+  "name": "Puppet Apache",
+  "license": "EULA",
+  "description": "Puppet Apache",
+  "baseScript": "#!/bin/bash\n\n\nPUPPET_AGENT_DEB=\"https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\"\nwget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\nsudo dpkg -i puppetlabs-release-pc1-xenial.deb\n#sudo apt update && sudo apt -y install puppet-agent\necho \"export PATH=/opt/puppetlabs/bin:$PATH\"\nsudo -i puppet module install puppetlabs-apache\nFILE=\"/home/kkp/site.pp\"\n/bin/cat <<EOM >$FILE\nclass { 'apache':\n  default_vhost => true,\n}\nEOM\nsudo -i puppet apply $FILE",
+  "envs": [
+    {
+      "prop": "servers",
+      "val": "server {{AppServer | container_hostname}}:8080;",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

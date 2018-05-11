@@ -1,0 +1,12 @@
+{
+  "referenceId": "JKAxW",
+  "version": "1.0",
+  "name": "ReSize Disks after Provisioing",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "[CmdletBinding()]\nparam(\n    $Config\n)\n\nWrite-Verbose 'Extending existing volumes'\n'rescan' | diskpart\n(Get-CimInstance -Class Win32_Volume -Property Name -Verbose:$false).Name -match ':' | % {\n    \"select volume $_\",'extend' | diskpart\n}\n\n# config source here! check plugin execution order\nWrite-Verbose 'Changing drive letter for CDROM'\n'select volume 0','assign letter=Z' | diskpart\n\nWrite-Verbose 'Formatting and mounting additional disks'\n$DiskProperties = 'Index','SerialNumber','Partitions','SCSIPort','SCSILogicalUnit'\n$DiskDrives = Get-CimInstance -Class Win32_DiskDrive -Property $DiskProperties -Verbose:$false\n$LogicalDisks = Get-CimInstance Win32_LogicalDisk -Property DeviceID -Verbose:$false\n$i = 0\n$UnassignedLetters = [char[]](68..90) | ? { $_ -notin $LogicalDisks.DeviceID.TrimEnd(':') }\nforeach ($HDD in $Config.HDD) {\n    $Port, $Lun = $HDD.DeviceNode -replace 'scsi' -split ':'\n    $HardDisk = $DiskDrives |\n    ? { ($_.SerialNumber -and $_.SerialNumber -eq $HDD.Uuid) -or ($_.SCSIPort -eq $Port -and $_.SCSILogicalUnit -eq $Lun)}\n    $Index = $HardDisk.Index\n    if (-not $HardDisk.Partitions) {\n        $MountPoint = if ($HDD.MountPoint) { $HDD.MountPoint } else { $UnassignedLetters[$i] + ':'; $i++ }\n        $Label = if ($HDD.Label) { $HDD.Label } else { 'Data' }\n        $ClusterSizeKB = if ($HDD.ClusterSizeKB) { \"$($HDD.ClusterSizeKB)K\" } else { '4K' }\n        mkdir $MountPoint -ea SilentlyContinue\n        Write-Verbose \"Index: $Index, MountPoint: $MountPoint, Label: $Label, Cluster Size: $ClusterSizeKB\"\n        \"select disk $Index\",\n        'attributes disk clear readonly',\n        'online disk',\n        'convert gpt',\n        'create partition primary',\n        \"format label='$Label' fs=ntfs unit=$ClusterSizeKB quick\",\n        \"assign mount='$MountPoint'\" | diskpart\n    } else {\n        # disks are offline after sysprep ('SAN POLICY=OnlineAll')\n        \"select disk $Index\",\n        'online disk' | diskpart\n    }\n}",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

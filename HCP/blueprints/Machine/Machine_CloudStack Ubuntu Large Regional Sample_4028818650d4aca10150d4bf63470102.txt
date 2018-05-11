@@ -1,0 +1,16 @@
+{
+  "id": "4028818650d4aca10150d4bf63470102",
+  "name": "CloudStack Ubuntu Large Regional Sample",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": null,
+  "shortDescription": "CloudStack Ubuntu Large Regional Sample",
+  "externalLink": null,
+  "imageLink": null,
+  "yml": "# Note: Some of the fields are optional based on provider and can be left empty.\n# Large - This is a user defined name.\nLarge:\n  # CloudStack region name\n  region:\n  # System description\n  description:\n  # CPU Memory and Disk sizes\n  instanceType: <<Memory Size>>\n  # Image name\n  image: <<Linux Image Name>>\n  securityGroup: <<Default>>\n  keyPair:\n  username:\n  password:\n  # Total VMs to spin\n  count: 1\n  ",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

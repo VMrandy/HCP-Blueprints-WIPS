@@ -1,0 +1,16 @@
+{
+  "id": "2c9180876317dbd801632c5fa0f61286",
+  "name": "HCP-Nginx-Tomcat-Postgres",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "HCP-Nginx-Tomcat-Postgres",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

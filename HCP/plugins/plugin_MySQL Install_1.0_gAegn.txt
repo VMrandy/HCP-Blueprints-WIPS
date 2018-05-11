@@ -1,0 +1,31 @@
+{
+  "referenceId": "gAegn",
+  "version": "1.0",
+  "name": "MySQL Install",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "rootpassword",
+      "val": "password",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "myuser",
+      "val": "user",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "mypass",
+      "val": "password",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "PUPPET",
+  "timeout": 30
+}

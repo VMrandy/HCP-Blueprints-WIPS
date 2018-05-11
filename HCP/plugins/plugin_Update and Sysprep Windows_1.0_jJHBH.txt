@@ -1,0 +1,12 @@
+{
+  "referenceId": "jJHBH",
+  "version": "1.0",
+  "name": "Update and Sysprep Windows",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Param(\n  [switch]$InstallCloudbaseInit\n)\n$ErrorActionPreference = \"Stop\"\n\n$Host.UI.RawUI.WindowTitle = \"Installing updates...\"\n\nGet-WUInstall -AcceptAll -IgnoreReboot\nif (Get-WURebootStatus -Silent)\n{\n    $Host.UI.RawUI.WindowTitle = \"Updates installation finished. Rebooting.\"\n    shutdown /r /t 0\n}\nelse\n{\n    Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name Unattend*\n    Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" -Name AutoLogonCount\n    if($InstallCloudbaseInit)\n    {\n        Invoke-WebRequest -Uri https://dl.dropboxusercontent.com/u/9060190/InstallCloudbaseInit.ps1 -OutFile C:\\Windows\\Temp\\InstallCloudbaseInit.ps1\n        C:\\Windows\\Temp\\InstallCloudbaseInit.ps1\n\n        #$Host.UI.RawUI.WindowTitle = \"Running Sysprep...\"\n        #C:\\Windows\\System32\\Sysprep\\Sysprep.exe /generalize /oobe /shutdown /unattend:\"C:\\Program\\ Files\\ (x86)\\Cloudbase\\ Solutions\\Cloudbase-Init\\conf\\Unattend.xml\"\n    }\n    else\n    {\n        $Host.UI.RawUI.WindowTitle = \"Running Sysprep...\"      \n        C:\\Windows\\System32\\Sysprep\\Sysprep.exe /generalize /oobe /shutdown /unattend:C:\\Windows\\Temp\\Unattend.xml\n    }\n}",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

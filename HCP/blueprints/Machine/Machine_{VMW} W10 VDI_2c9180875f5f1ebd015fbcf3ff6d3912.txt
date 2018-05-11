@@ -1,0 +1,32 @@
+{
+  "id": "2c9180875f5f1ebd015fbcf3ff6d3912",
+  "name": "{VMW} W10 VDI",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Windows 10 HCP VDI Desktop brokered by Leostream",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/micro.png",
+  "yml": "Machine: \n  group: HC-VDI-W10\n  region: HG-Datacenter\n  image: VMT-HC-VDI-W10E\n  instanceType: cpu=1,memory=4GB,disk=60GB\n  network: dvp-vlan-26\n  skipAgentInstall: true\n  backupEnable: false\n  count: 1\n  plugins:      \n    - !plugin\n      id: gb1t4\n      arguments:\n        - SVC_Pwd=HyperGrid123\n        - Domain=SKYGRID.CLOUD\n        - SVC-Account=leostream_svc\n        - Local-Admin=Admin\n        - Local_Pwd=HyperGrid123\n        - Owner=HyperGrid\n        - Organization=HyperGrid\n        - Key=6RNDG-X7WFJ-7RQV4-FH9CY-YWRC6\n        - OU=OU=Virtual Desktops,OU=HyperGrid,DC=skygrid,DC=cloud\n      lifecycle: post_create",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [
+    {
+      "id": "2c9180875e531c10015e95f623d837d5",
+      "inactive": false,
+      "deleted": false,
+      "username": "randy keener",
+      "firstname": "Randy",
+      "lastname": " "
+    }
+  ],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875f5f1ebd015fc5f13aa33cac",
+      "inactive": false,
+      "deleted": false,
+      "name": "Pre-Sales"
+    }
+  ]
+}

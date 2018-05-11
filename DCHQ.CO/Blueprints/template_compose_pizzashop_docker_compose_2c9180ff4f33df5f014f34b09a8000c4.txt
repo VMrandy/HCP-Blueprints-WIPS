@@ -1,0 +1,8 @@
+{
+  "id": "2c9180ff4f33df5f014f34b09a8000c4",
+  "name": "PizzaShop Docker Compose",
+  "version": "1.2-Multi-Host-HA-Cluster",
+  "tags": null,
+  "description": null,
+  "yml": "AppServer:\n  image: tomcat:8.0.21-jre8\n  mem_limit: 1g\n  cpu_shares: 1\n  publish_all: true\n  cluster_size: 2\n  host: host1, host2\n  environment:\n    - database.driverClassName=com.mysql.jdbc.Driver\n    - database.url=jdbc:mysql://{{MySQL|container_ip}}:3306/{{MySQL|MYSQL_DATABASE}}\n    - database.username={{MySQL|MYSQL_USER}}\n    - database.password={{MySQL|MYSQL_ROOT_PASSWORD}}\n  plugins:\n    - !plugin\n      id: 2c9180ff4f33df5f014f347dc3750043\n      restart: true\n      arguments:\n        - file_url=https://dl.dropboxusercontent.com/u/4090128/pizzashop-0.1.0.BUILD-SNAPSHOT.war\nMySQL:\n  image: mysql:latest\n  mem_limit: 756m\n  cpu_shares: 1\n  host: host3\n  environment:\n    - MYSQL_USER=root\n    - MYSQL_DATABASE=pizzashop\n    - MYSQL_ROOT_PASSWORD={{alphanumeric|8}}"
+}

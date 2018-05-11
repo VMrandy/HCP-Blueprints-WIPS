@@ -1,0 +1,8 @@
+{
+  "id": "2c9180ff4f33df5f014f349385670063",
+  "name": "Flask-Python",
+  "version": "1.0",
+  "tags": null,
+  "description": null,
+  "yml": "python:\n  image: dchq/python:latest\n  mem_limit: 1g\n  cpu_shares: 1\n  tty: true\n  publish_all: true\n  environment:\n    - REDIS_IP={{redis|container_ip}}\n  plugins:\n    - !plugin\n      id: 2c9180ff4f33df5f014f347d4f290041\n  links:\n    - redis\nredis:\n  image: redis:latest\n  mem_limit: 1g\n  cpu_shares: 1"
+}

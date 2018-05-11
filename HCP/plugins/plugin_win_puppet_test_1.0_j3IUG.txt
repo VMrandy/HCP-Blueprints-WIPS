@@ -1,0 +1,12 @@
+{
+  "referenceId": "j3IUG",
+  "version": "1.0",
+  "name": "win_puppet_test",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "new-item c:/tmp/site.pp -type file -force -value \"file { 'c:/tmp/example.txt': content => 'hello world' }\"\npuppet apply c:/tmp/site.pp",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

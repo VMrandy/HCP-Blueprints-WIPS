@@ -1,0 +1,16 @@
+{
+  "id": "2c91800f505f937a01506ccbafa5462b",
+  "name": "Jenkins",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Couchbase",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": null,
+  "yml": "Jenkins:\n  image: jenkins:latest\n  publish_all: true",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

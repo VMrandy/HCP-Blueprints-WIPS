@@ -1,0 +1,19 @@
+{
+  "referenceId": "Yj5he",
+  "version": "1.0",
+  "name": "Puppet Postgres",
+  "license": "EULA",
+  "description": "Puppet Postgres",
+  "baseScript": "#!/bin/bash\n\nPUPPET_AGENT_DEB=\"https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\"\nwget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb\nsudo dpkg -i puppetlabs-release-pc1-xenial.deb\nsudo apt update && sudo apt -y install puppet-agent\necho \"export PATH=/opt/puppetlabs/bin:$PATH\"\nsudo -i puppet module install puppetlabs-mysql\nsudo -i puppet module install puppetlabs-apache\nsudo -i puppet module install puppetlabs-postgresql\nFILE=\"/home/ubuntu/postgres.pp\"\n/bin/cat <<EOM >$FILE\nclass { 'postgresql::server':\n  postgres_password          => 'root123',\n}\n\npostgresql::server::db { 'test_sample':\n  user     => 'test_user',\n  password => postgresql_password('test_user', 'test_pwd'),\n}\npostgresql::server::database_grant { 'test_user':\n  privilege => 'ALL',\n  db        => 'test_sample',\n  role        => 'test_user',\n}\npostgresql::server::role { 'test_user':\n  superuser        => true,\n}\n# rule for remote connections\npostgresql::server::pg_hba_rule { 'allow remote connections with password':\n  type        => 'host',\n  database    => 'all',\n  user        => 'all',\n  address     => 'all',\n  auth_method => 'md5',\n}\npostgresql::server::config_entry { 'listen_addresses':\n  value => '*',\n}\nEOM\nsudo -i puppet apply $FILE",
+  "envs": [
+    {
+      "prop": "servers",
+      "val": "server {{AppServer | container_hostname}}:8080;",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

@@ -1,0 +1,23 @@
+{
+  "id": "2c91800a4fd49316014fe36aa3f64054",
+  "name": "JBoss/SwitchYard",
+  "version": "latest",
+  "tags": "DEV",
+  "description": "A lightweight service delivery framework providing full lifecycle support for developing, deploying, and managing service-oriented applications.",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "Switchyard-wildfly:\n  image: jboss/switchyard-wildfly\n  publish_all: true",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [],
+  "entitledUserGroups": [
+    {
+      "id": "2c9180875644068f01564f0e092a364b",
+      "inactive": false,
+      "deleted": false,
+      "name": "HyperForm-Team"
+    }
+  ]
+}

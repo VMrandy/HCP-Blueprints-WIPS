@@ -1,0 +1,19 @@
+{
+  "referenceId": "QK0TR",
+  "version": "1.0",
+  "name": "Win_Splunk_Adding_Event Logs",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#Adding Performance monitor to get logical disk space, CPU, Memory Utilization etc. on Forwarder.\n\n#$FilePath = \"C:\\Program` `Files\\Splunk\\etc\\system\\local\\inputs.conf\"\nAdd-Content $FilePath \"`r`n#Performance monitor\"\nAdd-Content $FilePath \"`n[perfmon://CPU]\"\nAdd-Content $FilePath \"`ndisabled = false\"\nAdd-Content $FilePath \"`ncounters = *\"\nAdd-Content $FilePath \"`ninstances = *\"\nAdd-Content $FilePath \"`ninterval = 10\"\nAdd-Content $FilePath \"`nobject = Processor\"\nAdd-Content $FilePath \"`nuseEnglishOnly = true\"\nAdd-Content $FilePath \"`n\"\nAdd-Content $FilePath \"`n[perfmon://ProcessandProcessor]\"\nAdd-Content $FilePath \"`nobject = Process.*\"\nAdd-Content $FilePath \"`ncounters = *\"\nAdd-Content $FilePath \"`ninstances = *\"\nAdd-Content $FilePath \"`n\"\nAdd-Content $FilePath \"`n[perfmon://LogicalDisk]\"\nAdd-Content $FilePath \"`ndisabled = false\"\nAdd-Content $FilePath \"`ncounters = % Free Space; Free Megabytes; % Disk Time; Avg. Disk sec/Read; Avg. Disk sec/Write; Avg. Disk sec/Transfer; Disk Reads/sec; Disk Writes/sec;\"\nAdd-Content $FilePath \"`ninstances = *\"\nAdd-Content $FilePath \"`ninterval = 10\"\nAdd-Content $FilePath \"`nobject = LogicalDisk\"\nAdd-Content $FilePath \"`nuseEnglishOnly = true\"\nAdd-Content $FilePath \"`n\"\nAdd-Content $FilePath \"`n[perfmon://Memory]\"\nAdd-Content $FilePath \"`ndisabled = false\"\nAdd-Content $FilePath \"`ncounters = % Committed Bytes In Use; Committed Bytes; Available MBytes; Page Reads/sec, Page Writes/sec; Page Faults/sec; Transition Faults/sec;\"\nAdd-Content $FilePath \"`ninterval = 10\"\nAdd-Content $FilePath \"`nobject = Memory\"\nAdd-Content $FilePath \"`nuseEnglishOnly = true\"\nAdd-Content $FilePath \"`n\"\nAdd-Content $FilePath \"`n[perfmon://Network]\"\nAdd-Content $FilePath \"`ndisabled = false\"\nAdd-Content $FilePath \"`nCounters = Bytes Received/sec; Bytes Sent/sec; Bytes Total/sec;\"\nAdd-Content $FilePath \"`ninstances = *\"\nAdd-Content $FilePath \"`ninterval = 10\"\nAdd-Content $FilePath \"`nobject = Network Interface\"\nAdd-Content $FilePath \"`nuseEnglishOnly = true\"\nAdd-Content $FilePath \"`n\"\nAdd-Content $FilePath \"`n[perfmon://System]\"\nAdd-Content $FilePath \"`ndisabled = false\"\nAdd-Content $FilePath \"`ncounters = System Up Time; Processor Queue Length;\"\nAdd-Content $FilePath \"`ninstances = *\"\nAdd-Content $FilePath \"`ninterval = 60\"\nAdd-Content $FilePath \"`nobject = System\"\nAdd-Content $FilePath \"`nuseEnglishOnly = true\"\nAdd-Content $FilePath \"`n\"\nAdd-Content $FilePath \"`n[perfmon://Free Disk Space]\"\nAdd-Content $FilePath \"`ndisabled = 0\"\nAdd-Content $FilePath \"`ncounters = Free Megabytes;% Free Space\"\nAdd-Content $FilePath \"`ninstances = *\"\nAdd-Content $FilePath \"`ninterval = 3600\"",
+  "envs": [
+    {
+      "prop": "FilePath",
+      "val": "C:\\Program` `Files\\Splunk\\etc\\system\\local\\inputs.conf",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

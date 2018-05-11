@@ -1,0 +1,12 @@
+{
+  "referenceId": "DkSrx",
+  "version": "1.0",
+  "name": "Writing_Sample_PS",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Write-Host –NoNewLine \"Counting from 1 to 9 (in seconds):  \"\n\nforeach($element in 1..9){\n\n  Write-Host –NoNewLine  \"${element} \"\n\n  Start-Sleep –Seconds 1\n\n}\n\nWrite-Host \"\"",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

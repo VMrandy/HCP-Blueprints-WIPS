@@ -1,0 +1,19 @@
+{
+  "referenceId": "5etiz",
+  "version": "1.0",
+  "name": "Install Windows Features",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Install-WindowsFeature -Name '$feature' -IncludeAllSubFeature -IncludeManagementTools",
+  "envs": [
+    {
+      "prop": "feature",
+      "val": "{windows feature}",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

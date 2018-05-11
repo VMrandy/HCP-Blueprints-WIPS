@@ -1,0 +1,16 @@
+{
+  "id": "2c9180876057a0c9016124a66417609a",
+  "name": "HG Analytics",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "The HG Analytics from the xocur_library",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "version: '3'\n\nservices:\n  api:\n    restart: always\n    image: xocur/xo_admin:latest\n    registry_id: 2c9180876057a0c901612f1d096a7fcb\n    container_name: api\n    environment:\n      STAGE: PROD\n      PYTHONPATH: /code\n    command: gunicorn -w 2 --log-level DEBUG --bind api:8000 application.wsgi:app\n    expose:\n      - \"8000\"\n    ports:\n    - \"8000:8000\"\n\n#\n#  CMC needs to use an Nginx image that does https\n#  Please refer to version control before this branch.\n#\n  nginx:\n    restart: always\n    image: xocur/xo_nginx:latest\n    registry_id: 2c9180876057a0c901612f1d096a7fcb\n    container_name: nginx\n    ports:\n      - \"80:80\"\n      - \"443:443\"\n    depends_on:\n      - api\n    volumes:\n      - /var/run/docker.sock:/tmp/docker.sock:ro\n",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

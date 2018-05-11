@@ -1,0 +1,16 @@
+{
+  "id": "2c9180885e30c590015ea08a2e1d1e7a",
+  "name": "Grafana",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Grafana",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/default.png",
+  "yml": "Blueprint YAML not available for viewing.",
+  "visibility": "HIDE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

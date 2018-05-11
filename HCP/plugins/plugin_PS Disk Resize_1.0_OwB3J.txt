@@ -1,0 +1,18 @@
+{
+  "referenceId": "OwB3J",
+  "version": "1.0",
+  "name": "PS Disk Resize",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "$size = (Get-PartitionSupportedSize -DriveLetter C)\nResize-Partition -DriveLetter C -Size $size.SizeMax",
+  "envs": [
+    {
+      "prop": "",
+      "val": "",
+      "hidden": false
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

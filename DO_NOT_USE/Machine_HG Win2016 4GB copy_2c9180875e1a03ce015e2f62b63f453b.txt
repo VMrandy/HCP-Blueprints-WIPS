@@ -1,0 +1,24 @@
+{
+  "id": "2c9180875e1a03ce015e2f62b63f453b",
+  "name": "HG Win2016 4GB copy",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Windows Server 2016 with 2 vCPUs, 4 GB Memory and 40 GB of SSD Disk.",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/micro.png",
+  "yml": "Win16: \n  group: win16\n  image: C:\\ClusterStorage\\HyperCloud_Templates\\Default_Update\\2016HFTWDockerV2.vhdx\n  instanceType: cpu=2,memory=4GB,disk=40GB,generation=1\n  network: Compute vmSwitch,vlanId=16\n  skipAgentInstall: true\n  count: 1\n  plugins:\n    - !plugin\n      id: OwB3J\n      lifecycle: post_create",
+  "visibility": "READABLE",
+  "params": [
+    {
+      "label": "VM Prefix",
+      "prop": "Win16.group",
+      "suggestion": "win16",
+      "mandatory": false,
+      "val": null
+    }
+  ],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

@@ -1,0 +1,31 @@
+{
+  "referenceId": "InJlL",
+  "version": "1.0",
+  "name": "Veeam Hyper-V Host Config",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "ping $HyperV_Host_Name\n& 'C:\\Program Files\\Veeam\\Console\\Install-VeeamToolkit.ps1'\n& 'C:\\Program Files\\Veeam\\Console\\Initialize-VeeamToolkit.ps1'\ncls\nGet-VBRServer\nWrite-Host \"Start executing\"\nAdd-VBRHvHost -Name $HyperV_Host_Name -User $username -Password $password\nWrite-Host \"End executing\"",
+  "envs": [
+    {
+      "prop": "username",
+      "val": "\"GSKY\\mathurP\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "HyperV_Host_Name",
+      "val": "\"GS1604-0225.GSKY.LA\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "password",
+      "val": "\"Vijay108\"",
+      "hidden": true,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

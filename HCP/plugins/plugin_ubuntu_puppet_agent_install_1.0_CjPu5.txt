@@ -1,0 +1,12 @@
+{
+  "referenceId": "CjPu5",
+  "version": "1.0",
+  "name": "ubuntu_puppet_agent_install",
+  "license": "Apache License 2.0",
+  "description": "Installs puppet agent on Ubuntu distro's",
+  "baseScript": "#!/bin/sh\n# WARNING: REQUIRES /bin/sh\n\nplatform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d \"=\" -f 2`\n\n\t\tcase $platform_version in\n          \"12.04\") ubuntu_codename=\"precise\";;\n          \"12.10\") ubuntu_codename=\"quantal\";;\n          \"13.04\") ubuntu_codename=\"raring\";;\n          \"13.10\") ubuntu_codename=\"saucy\";;\n          \"14.04\") ubuntu_codename=\"trusty\";;\n          \"15.04\") ubuntu_codename=\"vivid\";;\n          \"15.10\") ubuntu_codename=\"wily\";;\n          \"16.04\") ubuntu_codename=\"xenial\";;\n          \"16.10\") ubuntu_codename=\"yakkety\";;\n          \"14.10\") utopic;;\n        esac\n    filetype=\"deb\"\n    filename=\"puppetlabs-release-pc1-${ubuntu_codename}.deb\"\n    download_url=\"http://apt.puppetlabs.com/${filename}\"\n      \n\t\t\ncd ~ && wget ${download_url}\nsudo dpkg -i ${filename}\n\nsudo apt-get update\nsudo apt-get install puppet-agent\n\necho \"PATH=$PATH:/opt/puppetlabs/bin; export PATH\" >> /etc/profile\nln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

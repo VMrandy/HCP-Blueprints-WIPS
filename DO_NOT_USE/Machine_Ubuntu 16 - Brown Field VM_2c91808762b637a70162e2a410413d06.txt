@@ -1,0 +1,16 @@
+{
+  "id": "2c91808762b637a70162e2a410413d06",
+  "name": "Ubuntu 16 - Brown Field VM",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Ubuntu 16 - Brown Field VM\nMachine: \n  group: ubuntu16\n  region: HG-Datacenter\n  image: HC Ubuntu 16 Template\n  instanceType: cpu=8,memory=8GB,disk=100GB\n  affinity: true\n  network: dvp-vlan-26\n  skipAgentInstall: false\n  username: hc\n  password: HyperGrid123\n  count: 1",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/default.png",
+  "yml": "Machine: \n  group: ubuntu16\n  region: HG-Datacenter\n  image: HC Ubuntu 16 Template\n  instanceType: cpu=8,memory=8GB,disk=100GB\n  affinity: true\n  network: dvp-vlan-26\n  skipAgentInstall: false\n  username: hc\n  password: HyperGrid123\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

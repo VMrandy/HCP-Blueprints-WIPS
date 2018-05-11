@@ -1,0 +1,31 @@
+{
+  "referenceId": "RCZ8p",
+  "version": "1.0",
+  "name": "Veeam Installation NEW",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "\n$computername = \"$env:computername\"\n$computername\n$computer = [ADSI]\"WinNT://$computerName,computer\"\n$computer\n$uList = $computer.psbase.Children | Where-Object { $_.psbase.schemaclassname -eq 'user' } \n#$userList\nforeach ($u in $uList)\n{\n$uObject = New-Object System.Security.Principal.NTAccount($u.Name)\n\n$uSID = $uObject.Translate([System.Security.Principal.SecurityIdentifier])\n\nif(($uSID.Value.substring(0,6) -eq \"S-1-5-\") -and ($uSID.Value.substring($uSID.Value.Length - 4, 4) -eq \"-500\"))\n{\n    #Write-Host \"reached\"\n    $u.SetPassword('HyperGrid123')\n\n}\n}\n\n$net = new-object -ComObject WScript.Network\n$net.MapNetworkDrive(\"T:\", \"$path\", $false, \"$user\", \"$pass\")\nMount-DiskImage -ImagePath \"T:\\VeeamAvailabilitySuite_9.5.Update1.iso\" \n$volumes = Get-Volume\nforeach ( $vol in $volumes)\n{\n     if ($vol.FileSystemLabel -match \"VEEAM\")\n      {\n        Write-Host \"Success\"\n        $drive = $vol.DriveLetter\n        Break\n        }\n    }\nif (Test-Path C:\\veeam_software){\n            Copy-Item -Path ($drive + \":\\*\") -Destination C:\\veeam_software -Recurse\n            Copy-Item -Path T:\\config.ini -Destination C:\\veeam_software\n            Copy-Item -Path T:\\veeam_backup_nfr_12_0.lic -Destination C:\\veeam_software\n            }\nelse\n  {\n    md c:\\veeam_software\n    Copy-Item -Path ($drive + \":\\*\") -Destination C:\\veeam_software -Recurse\n    Copy-Item -Path T:\\config.ini -Destination C:\\veeam_software\n    Copy-Item -Path T:\\veeam_backup_nfr_12_0.lic -Destination C:\\veeam_software\n    }    \n    \nDismount-DiskImage -ImagePath \"T:\\VeeamBackup&Replication_9.5.0.823.Update1.iso\"\n$net.RemoveNetworkDrive(\"T:\")\nSleep 20\n$proc = Start-Process \"c:\\veeam_software\\Redistr\\NDP452-KB2901907-x86-x64-AllOS-ENU.exe\" -ArgumentList '/q /norestart' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"DOT NET FRAMEWORK installed successfully\"}\nSleep 20\n$proc = Start-Process \"c:\\veeam_software\\Redistr\\x64\\SQLEXPR_x64_ENU.exe\" -ArgumentList '/ConfigurationFile=\"C:\\veeam_software\\config.ini\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"SQL EXPRESS installed successfully\"}\n$proc = Start-Process msiexec.exe -ArgumentList '/L*v \"C:\\log_clr_sql.txt\" /qn /i \"C:\\veeam_software\\Redistr\\x64\\SQLSysClrTypes.msi\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"CLR installed successfully\"}\n$proc = Start-Process msiexec.exe -ArgumentList '/L*v \"C:\\log_mo_sql.txt\" /qn /i \"C:\\veeam_software\\Redistr\\x64\\SharedManagementObjects.msi\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"management objects installed successfully\"}\n$proc = Start-Process msiexec.exe -ArgumentList '/L*v \"C:\\log_rewrite_sql.txt\" /qn /i \"C:\\veeam_software\\Redistr\\x64\\rewrite_amd64.msi\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"re-write IIS installed successfully\"}\n#Now Veeam installation starts \n$proc = Start-Process msiexec.exe -ArgumentList '/L*v \"C:\\log_catalog.txt\" /qn /i \"C:\\veeam_software\\Catalog\\VeeamBackupCatalog64.msi\" VBRC_SERVICE_USER=\".\\Administrator\" VBRC_SERVICE_PASSWORD=\"Gridstore123\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"Catalog installed successfully\"}\n$proc = Start-Process msiexec.exe -ArgumentList '/L*v \"C:\\log_VBR.txt\" /qn /i \"C:\\veeam_software\\Backup\\Server.x64.msi\" ACCEPTEULA=\"YES\" INSTALLDIR=\"C:\\Program Files\\Veeam\" VBR_LICENSE_FILE=\"C:\\veeam_software\\veeam_backup_nfr_12_0.lic\" VBR_SERVICE_USER=\".\\Administrator\" VBR_SERVICE_PASSWORD=\"HyperGrid123\" VBR_SQLSERVER_SERVER=\"localhost\\SQLEXPRESS\" VBR_SQLSERVER_DATABASE=\"VeeamBackup\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"VBR installed successfully\"}\n$proc = Start-Process msiexec.exe -ArgumentList '/qn /L*v \"C:\\log_Console.txt\" /qn /i \"C:\\veeam_software\\Backup\\Shell.x64.msi\" ACCEPTEULA=yes INSTALLDIR=\"C:\\Program Files\\Veeam\\\"' -Wait -PassThru\nif ($proc.exitcode -eq '0')\n{Write-Host \"console installed successfully\"}\n$status = Get-Service -DisplayName \"Veeam Backup Service\"\n$status.Status\nif ($status.Status -eq 'Running')\n{ Write-Host \"Veeam Installed completely\"\nBreak}\nelse\n{ Write-Host \"Not Done\"}",
+  "envs": [
+    {
+      "prop": "pass",
+      "val": "6vDCTab3",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "user",
+      "val": "skygrid\\pmathur",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "path",
+      "val": "\\\\10.0.1.19\\fs01\\ISO",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "POWERSHELL",
+  "timeout": 30
+}

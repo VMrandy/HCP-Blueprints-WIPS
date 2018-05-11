@@ -1,0 +1,19 @@
+{
+  "referenceId": "ttChF",
+  "version": "1.0",
+  "name": "LS (Shell)",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "Script protected as part of EULA license.",
+  "envs": [
+    {
+      "prop": "param",
+      "val": "lrt",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

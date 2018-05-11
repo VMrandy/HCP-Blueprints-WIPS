@@ -1,0 +1,33 @@
+{
+  "id": "2c9180876224de5201623fdb535b2946",
+  "name": "Ubuntu 14 / VMW",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Ubuntu 14.04 on VMware Platform",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://i.imgur.com/kyl0kfh.png",
+  "yml": "Machine: \n  group: sprint\n  region: HG-Datacenter\n  image: Ubuntu_14_HCT_SOFTBANK\n  instanceType: cpu=2,memory=2GB,disk=100GB\n  affinity: true\n  network: dvp-vlan-2026\n  skipAgentInstall: true\n  count: 1",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "CUSTOM",
+  "entitledUsers": [
+    {
+      "id": "2c9180876224de5201622500e2d200a6",
+      "inactive": false,
+      "deleted": false,
+      "username": "sprint",
+      "firstname": "SprintTenant",
+      "lastname": " "
+    },
+    {
+      "id": "2c9180876224de5201623fe7384e295f",
+      "inactive": false,
+      "deleted": false,
+      "username": "sprintuser",
+      "firstname": "SprintUser",
+      "lastname": ""
+    }
+  ],
+  "entitledUserGroups": []
+}
